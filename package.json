@@ -16,8 +16,12 @@
     "dnew-prod": "npm run dbuild-prod && npm run dprod"
   },
   "dependencies": {
+    "axios": "^1.4.0",
+    "enzyme": "^3.11.0",
+    "jest": "^29.6.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
