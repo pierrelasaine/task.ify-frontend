@@ -22,3 +22,8 @@ export const API_BASE_URL =
     (process.env.NODE_ENV as NodeEnv) === 'production'
         ? PRODUCTION_API_BASE_URL
         : DEVELOPMENT_API_BASE_URL
+
+
+export function testcommit() {
+    return "test"
+}
