@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios, { AxiosResponse, AxiosError } from 'axios'
 import { API_BASE_URL } from './constants'
 
 /**
@@ -15,7 +15,7 @@ interface IConfig {
  */
 interface IResponse {
     data: any
-    error: any
+    error: AxiosError | null
 }
 
 /**
@@ -66,8 +66,8 @@ class ApiClient {
                 headers
             })
             return { data: res.data, error: null }
-        } catch (error) {
-            console.error(error.response.status, error.response.data.error)
+        } catch (error: any) {
+            console.error(error.response?.status, error.response?.data.error)
             return { data: null, error: error.response.data.error }
         }
     }
@@ -81,6 +81,14 @@ class ApiClient {
             endpoint: '/login',
             method: 'GET'
         })
+    }
+    
+    /**
+     * Fetches the current user's profile from Spotify
+     * @returns {Promise<IResponse>} The current user's profile data or an error message
+     */
+    async spotifyGetMe(): Promise<IResponse> {
+        return this.request({ endpoint: 'auth/me', method: 'GET' })
     }
 }
 
