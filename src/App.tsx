@@ -27,16 +27,20 @@ function App() {
     }, [appState.isAuthenticated])
 
     const handleClick = async () => {
-        const {
-            data: { token: token }
-        } = await ApiClient.spotifyOAuth()
+        try {
+            const {
+                data: { token: token }
+            } = await ApiClient.spotifyOAuth()
 
-        if (token) {
-            localStorage.setItem('token', token)
-            setAppState(prevState => ({
-                ...prevState,
-                isAuthenticated: true
-            }))
+            if (token) {
+                localStorage.setItem('token', token)
+                setAppState(prevState => ({
+                    ...prevState,
+                    isAuthenticated: true
+                }))
+            }
+        } catch (error: any) {
+            console.error('An error occurred during the OAuth process', error)
         }
     }
 
@@ -64,7 +68,9 @@ function App() {
             </div>
             <h1>Vite + React</h1>
             <div className='card'>
-                <button onClick={handleClick}>Logged In: {appState.isAuthenticated}</button>
+                <button onClick={handleClick}>
+                    Logged In: {String(appState.isAuthenticated)}
+                </button>
                 <p>
                     Edit <code>src/App.tsx</code> and save to test HMR
                 </p>
