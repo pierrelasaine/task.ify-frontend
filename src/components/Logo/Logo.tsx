@@ -1,5 +1,5 @@
-export default function Logo() {
-    const logo = 'logo Asset URL'
+const Logo: React.FC = () => {
+    const logo = 'https://www.github.com/identicons/logo.png'
 
     return (
         <section className='logo'>
@@ -12,3 +12,5 @@ export default function Logo() {
         </section>
     )
 }
+
+export default Logo
