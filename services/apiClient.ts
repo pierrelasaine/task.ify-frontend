@@ -23,7 +23,6 @@ interface IResponse {
  */
 class ApiClient {
     private remoteHostUrl: string
-    private token: string | null
 
     /**
      * Constructor for the ApiClient class
@@ -31,15 +30,6 @@ class ApiClient {
      */
     constructor(remoteHostUrl: string) {
         this.remoteHostUrl = remoteHostUrl
-        this.token = null
-    }
-
-    /**
-     * Sets the token for authentication
-     * @param token - JWT token
-     */
-    setToken(token: string): void {
-        this.token = token
     }
 
     /**
@@ -54,8 +44,7 @@ class ApiClient {
     }: IConfig): Promise<IResponse> {
         const url = `${this.remoteHostUrl}/${endpoint}`
         const headers = {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.token}`
+            'Content-Type': 'application/json'
         }
 
         try {
@@ -63,7 +52,8 @@ class ApiClient {
                 url,
                 method,
                 data,
-                headers
+                headers,
+                withCredentials: true
             })
             return { data: res.data, error: null }
         } catch (error: any) {
@@ -76,11 +66,23 @@ class ApiClient {
      * Initiates OAuth with Spotify
      * @returns {Promise<IResponse>} Response from the server
      */
-    async spotifyOAuth(): Promise<IResponse> {
+    async spotifyOAuth() {
+        window.location.href = 'http://localhost:3001/oauth/login'
+    }
+
+    /**
+     * Checks session status to see if user is authenticated.
+     * @returns {Promise<IResponse>} Response from the server
+     */
+    async checkSessionStatus() {
         return this.request({
-            endpoint: '/login',
+            endpoint: 'oauth/session-status',
             method: 'GET'
         })
+    }
+
+    async logout() {
+        return this.request({ endpoint: 'oauth/logout', method: 'GET' })
     }
 
     /**

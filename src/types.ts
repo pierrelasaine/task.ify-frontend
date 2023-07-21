@@ -10,6 +10,10 @@ export interface NavProps {
     handleClick: () => void
 }
 
+export interface INavLinks {
+    appState: AppState
+}
+
 export interface ProtectedRouteProps {
     element: ReactElement
     appState: AppState

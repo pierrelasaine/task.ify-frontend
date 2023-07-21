@@ -15,35 +15,24 @@ const App: React.FC = () => {
     })
 
     useEffect(() => {
-        const getMe = async () => {
-            const token = localStorage.getItem('token')
-            if (token) {
-                ApiClient.setToken(token)
-                const { data } = await ApiClient.spotifyGetMe()
-                if (data) {
-                    setAppState(prevState => ({
-                        ...prevState,
-                        isAuthenticated: true
-                    }))
-                }
-            }
-            getMe()
+        checkAuthenticationStatus()
+    }, [])
+
+    const checkAuthenticationStatus = async () => {
+        try {
+            const response = await ApiClient.checkSessionStatus()
+            setAppState(prevState => ({
+                ...prevState,
+                isAuthenticated: response.data.isAuthenticated
+            }))
+        } catch (error) {
+            console.error('Failed to check authentication status:', error)
         }
-    }, [appState.isAuthenticated])
+    }
 
     const handleClick = async () => {
         try {
-            const {
-                data: { token: token }
-            } = await ApiClient.spotifyOAuth()
-
-            if (token) {
-                localStorage.setItem('token', token)
-                setAppState(prevState => ({
-                    ...prevState,
-                    isAuthenticated: true
-                }))
-            }
+            await ApiClient.spotifyOAuth()
         } catch (error: any) {
             console.error('An error occurred during the OAuth process', error)
         }
@@ -52,10 +41,9 @@ const App: React.FC = () => {
     return (
         <>
             <section className='App'>
-                <BrowserRouter> 
+                <BrowserRouter>
                     <Navbar
                         appState={appState}
-                        handleClick={handleClick}
                     />
                     <Routes>
                         <Route
