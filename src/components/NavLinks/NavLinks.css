@@ -1,0 +1,4 @@
+.logout-button {
+    background: var(--secondary);
+    color: var(--on-secondary)
+}

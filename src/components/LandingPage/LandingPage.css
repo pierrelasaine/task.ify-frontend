@@ -1,0 +1,36 @@
+.landing-page {
+    display: flex;
+    align-items: center;
+    padding-bottom: 8em;
+}
+
+.tertiary-logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15em;
+    width: 15em;
+    background: var(--tertiary-container);
+    border-radius: 60px;
+}
+
+.tertiary-logo-box img {
+    height: 7em;
+    object-fit: contain;
+}
+
+.primary-title {
+    margin-left: 0.2em;
+    font-size: 150px;
+    color: var(--primary);
+}
+
+.spotify-login {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+    font-size: 30px;
+    border-radius: 30px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
