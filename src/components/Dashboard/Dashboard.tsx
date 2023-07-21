@@ -1,10 +1,24 @@
+import { useState } from 'react'
+import CategoryBar from '../CategoryBar/CategoryBar'
+import './Dashboard.css'
 
-
-
-export default function Dashboard() {
+const Dashboard: React.FC = () => {
+    const [dashboardState, setDashboardState] = useState({
+        categories: ['Home', 'Chores', 'Work', 'School'],
+        tasks: [],
+        currentCategory: '',
+        currentTask: ''
+    })
     return (
         <>
-            Dashboard
+            <section className='dashboard'>
+                <CategoryBar
+                    dashboardState={dashboardState}
+                    setDashboardState={setDashboardState}
+                />
+            </section>
         </>
     )
 }
+
+export default Dashboard

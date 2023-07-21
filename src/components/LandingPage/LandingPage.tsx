@@ -1,44 +1,21 @@
 import { NavProps } from '../../types'
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '../../assets/vite.svg'
+import './LandingPage.css'
 
-const LandingPage: React.FC<NavProps> = ({ appState, handleClick }) => {
+const LandingPage: React.FC<NavProps> = ({ handleClick }) => {
     return (
         <>
-            <div>
-                <a
-                    href='https://vitejs.dev'
-                    target='_blank'>
-                    <img
-                        src={viteLogo}
-                        className='logo'
-                        alt='Vite logo'
-                    />
-                </a>
-                <a
-                    href='https://react.dev'
-                    target='_blank'>
-                    <img
-                        src={reactLogo}
-                        className='logo react'
-                        alt='React logo'
-                    />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className='card'>
-                <button onClick={handleClick}>
-                    Logged In: {String(appState.isAuthenticated)}
-                </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>
-                Click on the Vite and React logos to learn more
-            </p>
+            <section className='landing-page'>
+                <div className='tertiary-logo-box'>
+                    <img src='/src/assets/triangle.png' />
+                </div>
+                <h1 className='primary-title'>Task.ify</h1>
+            </section>
+            <button className='spotify-login' onClick={handleClick}>
+                Log in with Spotify
+            </button>
+
         </>
-    )
-}
+        )
+    }
 
 export default LandingPage

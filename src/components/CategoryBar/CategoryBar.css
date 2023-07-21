@@ -1,0 +1,13 @@
+.category-bar {
+    color: var(--secondary);
+}
+
+.category-button {
+    background: none;
+    color: var(--secondary);
+    padding: 1em 0em;
+}
+
+.active {
+    text-decoration: underline;
+}

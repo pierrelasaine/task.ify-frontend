@@ -1,6 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { INavLinks } from '../../types'
 import ApiClient from '../../../services/apiClient'
+import './NavLinks.css'
 
 const NavLinks: React.FC<INavLinks> = ({ appState }) => {
     const navigate = useNavigate()
@@ -19,10 +20,7 @@ const NavLinks: React.FC<INavLinks> = ({ appState }) => {
     } else if (appState.isAuthenticated) {
         return (
             <section className='nav-links'>
-                <Link to='/dashboard'>
-                    <button>Dash</button>
-                </Link>
-                <button onClick={handleLogOut}>Log Out</button>
+                <button className='logout-button' onClick={handleLogOut}>Log Out</button>
             </section>
         )
     }

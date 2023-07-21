@@ -75,10 +75,12 @@ class ApiClient {
      * @returns {Promise<IResponse>} Response from the server
      */
     async checkSessionStatus() {
-        return this.request({
+        const sessionStatus = this.request({
             endpoint: 'oauth/session-status',
             method: 'GET'
         })
+
+        return sessionStatus
     }
 
     async logout() {

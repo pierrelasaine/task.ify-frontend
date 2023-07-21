@@ -13,6 +13,7 @@ const App: React.FC = () => {
         isAuthenticated: false,
         doMode: false
     })
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         checkAuthenticationStatus()
@@ -27,6 +28,8 @@ const App: React.FC = () => {
             }))
         } catch (error) {
             console.error('Failed to check authentication status:', error)
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -42,9 +45,7 @@ const App: React.FC = () => {
         <>
             <section className='App'>
                 <BrowserRouter>
-                    <Navbar
-                        appState={appState}
-                    />
+                    <Navbar appState={appState} />
                     <Routes>
                         <Route
                             path='/'
@@ -61,6 +62,7 @@ const App: React.FC = () => {
                                 <ProtectedRoute
                                     element={<Dashboard />}
                                     appState={appState}
+                                    isLoading={isLoading}
                                     fallback={'/'}
                                 />
                             }

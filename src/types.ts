@@ -17,5 +17,18 @@ export interface INavLinks {
 export interface ProtectedRouteProps {
     element: ReactElement
     appState: AppState
+    isLoading: boolean
     fallback: string
+}
+
+export interface IDashboardState {
+    categories: string[]
+    tasks: never[]
+    currentCategory: string
+    currentTask: string
+}
+
+export interface IDCategoryBarProps {
+    dashboardState: IDashboardState
+    setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
 }

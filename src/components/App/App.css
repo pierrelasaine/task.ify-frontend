@@ -1,42 +1,85 @@
+:root {
+    --primary: #44692a;
+    --on-primary: #ffffff;
+    --primary-container: #c4f1a1;
+    --on-primary-container: #0e2004;
+    --secondary: #58624e;
+    --on-secondary: #ffffff;
+    --secondary-container: #dce7cd;
+    --on-secondary-container: #161f0f;
+    --tertiary: #436565;
+    --on-tertiary: #ffffff;
+    --tertiary-container: #c5eaeb;
+    --on-tertiary-container: #082f20;
+    --error: #ab2d25;
+    --on-error: #ffffff;
+    --error-container: #f9dbd7;
+    --on-error-container: #3b0605;
+    --surface: #f8faf1;
+    --surface-container: #edefe6;
+    --background: #ffffff;
+}
+
+@font-face {
+    font-family: 'Gotham Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../assets/fonts/Gotham-Bold.otf') format('opentype');
+}
+
+body {
+    background-image: radial-gradient(
+        circle at 1px 1px,
+        var(--surface-container) 3px,
+        transparent 0
+    );
+    background-size: 50px 30px;
+    background-color: #FDFDF6;
+}
+
+.App {
+    font-family: 'Gotham Bold', sans-serif;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
 }
 
 .card {
-  padding: 2em;
+    padding: 2em;
 }
 
 .read-the-docs {
-  color: #888;
+    color: #888;
 }
