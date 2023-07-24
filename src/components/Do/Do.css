@@ -1,0 +1,20 @@
+.do-task-name {
+    color: var(--tertiary);
+    font-size: 2em;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tertiary-container);
+    color: var(--on-tertiary-container);
+    height: 20em;
+    width: 40em;
+    margin-bottom: 15em;
+    border-radius: 60px;
+}
+
+.time-value {
+    font-size: 10em;
+}

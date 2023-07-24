@@ -7,11 +7,12 @@ import Navbar from '../Navbar/Navbar'
 import LandingPage from '../LandingPage/LandingPage'
 import Dashboard from '../Dashboard/Dashboard'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import Do from '../Do/Do'
 
 const App: React.FC = () => {
     const [appState, setAppState] = useState({
         isAuthenticated: false,
-        doMode: false
+        doTask: null
     })
     const [isLoading, setIsLoading] = useState(true)
 
@@ -60,7 +61,29 @@ const App: React.FC = () => {
                             path='/dashboard'
                             element={
                                 <ProtectedRoute
-                                    element={<Dashboard />}
+                                    element={<Dashboard appState={appState} />}
+                                    appState={appState}
+                                    isLoading={isLoading}
+                                    fallback={'/'}
+                                />
+                            }
+                        />
+                        <Route
+                            path='/do'
+                            element={
+                                <ProtectedRoute
+                                    element={<Do appState={appState} />}
+                                    appState={appState}
+                                    isLoading={isLoading}
+                                    fallback={'/'}
+                                />
+                            }
+                        />
+                        <Route
+                            path='*'
+                            element={
+                                <ProtectedRoute
+                                    element={<Dashboard appState={appState} />}
                                     appState={appState}
                                     isLoading={isLoading}
                                     fallback={'/'}

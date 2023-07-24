@@ -1,4 +1,5 @@
-import { ITask, IDashboardState } from '../../types'
+import { useNavigate } from 'react-router-dom'
+import { ITask, IDashboardState, AppState } from '../../types'
 import './TaskCard.css'
 
 interface ITaskCardProps {
@@ -6,21 +7,24 @@ interface ITaskCardProps {
     task: ITask
     dashboardState: IDashboardState
     setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
+    appState: AppState
 }
 
 const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
+    const navigate = useNavigate()
     /**
      * <>@todo set up complete task button
      * <>@todo set up delete task button
      */
-    // const handleComplete = () => {
-    //     console.log('complete task')
-    // }
     // const handleDelete = () => {
     //     console.log('delete task')
     // }
+    /**
+     * on start task, change to do mode
+     */
     const startTask = () => {
         console.log('start task')
+        navigate('/do')
     }
     return (
         <div className='task-card'>

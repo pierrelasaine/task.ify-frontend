@@ -4,10 +4,10 @@ import AddTaskCard from '../AddTaskCard/AddTaskCard'
 import TaskCard from '../TaskCard/TaskCard'
 import './Dashboard.css'
 import { IResponse } from '../../../services/apiClient'
-import { IDashboardState, ITask } from '../../types'
+import { IDashboardState, ITask, IAppStateProp } from '../../types'
 import ApiClient from '../../../services/apiClient'
 
-const Dashboard: React.FC = () => {
+const Dashboard: React.FC<IAppStateProp> = ({ appState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
         categories: ['Home', 'Chores', 'Work', 'School'],
         tasks: [
@@ -83,6 +83,7 @@ const Dashboard: React.FC = () => {
                         task={task}
                         dashboardState={dashboardState}
                         setDashboardState={setDashboardState}
+                        appState={appState}
                     />
                 ))}
             </section>

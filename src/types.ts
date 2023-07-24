@@ -1,8 +1,12 @@
 import { ReactElement } from "react"
 
+export interface IAppStateProp {
+    appState: AppState
+}
+
 export interface AppState {
     isAuthenticated: boolean
-    doMode: boolean
+    doTask: ITask | null
 }
 
 export interface NavProps {
