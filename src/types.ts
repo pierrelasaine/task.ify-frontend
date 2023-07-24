@@ -1,6 +1,4 @@
 import { ReactElement } from "react"
-import AddTaskCardForm from "./components/AddTaskCardForm/AddTaskCardForm"
-import AddTaskCardContents from "./components/AddTaskCardContents/AddTaskCardContents"
 
 export interface AppState {
     isAuthenticated: boolean

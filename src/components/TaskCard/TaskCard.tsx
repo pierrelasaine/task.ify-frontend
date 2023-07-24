@@ -13,12 +13,12 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
      * @todo set up complete task button
      * @todo set up delete task button
      */
-    const handleComplete = () => {
-        console.log('complete task')
-    }
-    const handleDelete = () => {
-        console.log('delete task')
-    }
+    // const handleComplete = () => {
+    //     console.log('complete task')
+    // }
+    // const handleDelete = () => {
+    //     console.log('delete task')
+    // }
     const startTask = () => {
         console.log('start task')
     }
