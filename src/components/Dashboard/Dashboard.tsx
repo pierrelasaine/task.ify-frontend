@@ -44,7 +44,7 @@ const Dashboard: React.FC = () => {
     }, [dashboardState.currentCategory, dashboardState.tasks.length])
 
     /**
-     * @todo Implement getTasks() in ApiClient.ts
+     * <>@todo Implement getTasks() in ApiClient.ts
      */
 
     const getTasks = async () => {

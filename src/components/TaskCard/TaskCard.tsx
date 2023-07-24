@@ -10,8 +10,8 @@ interface ITaskCardProps {
 
 const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
     /**
-     * @todo set up complete task button
-     * @todo set up delete task button
+     * <>@todo set up complete task button
+     * <>@todo set up delete task button
      */
     // const handleComplete = () => {
     //     console.log('complete task')
@@ -31,7 +31,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
             </button>
             <section className='task-column'>
                 {/**
-                 * @todo add task name and task playlist name
+                 * <>@todo add task name and task playlist name
                  */}
                 <section className='task-row'>
                     <h2 className='task-name'>{task.title}</h2>

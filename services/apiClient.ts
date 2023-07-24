@@ -88,14 +88,14 @@ class ApiClient {
     }
 
     /**
-     * @todo set up endpoint for fetching tasks from database
+     * <>@todo set up endpoint for fetching tasks from database
      */
     async getTasks(): Promise<IResponse> {
         return this.request({ endpoint: 'oauth/tasks', method: 'GET' })
     }
 
     /**
-     * @todo make routes for completing and deleting tasks
+     * <>@todo make routes for completing and deleting tasks
      */
 }
 
