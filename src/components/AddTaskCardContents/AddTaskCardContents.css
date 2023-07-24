@@ -1,0 +1,16 @@
+.add-button {
+    background: var(--tertiary);
+    height: 6em;
+    width: 6em;
+    border-radius: 20px;
+    margin-right: 1em;
+    color: var(--on-tertiary);
+}
+
+.add-button h1 {
+    margin: 0;
+}
+
+.spacer {
+    width: 1em;
+}

@@ -1,0 +1,85 @@
+.task-card {
+    display: flex;
+    height: 8em;
+    justify-content: center;
+    align-items: center;
+    background: var(--surface-container);
+    border-radius: 15px;
+    margin-bottom: 2em;
+    padding: 0em 1em;
+    max-width: 700px;
+}
+
+.play-button {
+    background: var(--primary);
+    height: 6em;
+    width: 6em;
+    border-radius: 20px;
+    margin-right: 1em;
+    color: var(--on-primary);
+}
+
+.play-button h1 {
+    margin: 0;
+}
+
+.task-column {
+    height: 100px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.task-name {
+    color: var(--primary);
+    margin: 0;
+}
+
+.playlist-name {
+    color: var(--secondary);
+    margin: 0;
+}
+
+.time-box {
+    background-color: var(--secondary-container);
+    border-radius: 30px;
+    padding: 0em 3em;
+}
+
+.time {
+    color: var(--secondary);
+    margin: 0;
+}
+
+.task-control {
+    background: var(--tertiary);
+    padding: 0;
+}
+
+.done {
+    color: var(--on-tertiary);
+}
+
+.delete {
+    color: var(--on-tertiary);
+}
+
+.playlist-button {
+    background: var(--secondary);
+    height: 6em;
+    width: 6em;
+    border-radius: 20px;
+    margin-left: 1em;
+    color: var(--on-primary);
+}
+
+.playlist-button h1 {
+    margin: 0;
+}
