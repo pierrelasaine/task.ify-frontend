@@ -13,7 +13,7 @@ interface IConfig {
 /**
  * Structure of the response from API requests
  */
-interface IResponse {
+export interface IResponse {
     data: any
     error: any | null
 }
@@ -88,12 +88,15 @@ class ApiClient {
     }
 
     /**
-     * Fetches the current user's profile from Spotify
-     * @returns {Promise<IResponse>} The current user's profile data or an error message
+     * @todo set up endpoint for fetching tasks from database
      */
-    async spotifyGetMe(): Promise<IResponse> {
-        return this.request({ endpoint: 'auth/me', method: 'GET' })
+    async getTasks(): Promise<IResponse> {
+        return this.request({ endpoint: 'oauth/tasks', method: 'GET' })
     }
+
+    /**
+     * @todo make routes for completing and deleting tasks
+     */
 }
 
 export default new ApiClient(API_BASE_URL)

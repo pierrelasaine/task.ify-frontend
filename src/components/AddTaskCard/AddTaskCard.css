@@ -1,0 +1,11 @@
+.add-task-card {
+    display: flex;
+    height: 8em;
+    justify-content: center;
+    align-items: center;
+    background: var(--surface-container);
+    border-radius: 15px;
+    padding: 0em 1em;
+    max-width: 700px;
+    margin-bottom: 2em;
+}

@@ -1,9 +1,9 @@
 import React from 'react'
-import { IDCategoryBarProps } from '../../types'
+import { ICategoryBarProps } from '../../types'
 
 import './CategoryBar.css'
 
-const CategoryBar: React.FC<IDCategoryBarProps> = ({
+const CategoryBar: React.FC<ICategoryBarProps> = ({
     dashboardState,
     setDashboardState
 }) => {
@@ -19,7 +19,7 @@ const CategoryBar: React.FC<IDCategoryBarProps> = ({
     }
 
     return (
-        <section className='category-bar'>
+        <div className='category-bar'>
             {dashboardState.categories?.map((category: string) => (
                 <React.Fragment key={category}>
                     {' '}
@@ -31,7 +31,7 @@ const CategoryBar: React.FC<IDCategoryBarProps> = ({
                     </button>{' '}
                 </React.Fragment>
             ))}
-        </section>
+        </div>
     )
 }
 
