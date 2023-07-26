@@ -1,4 +1,7 @@
+// External libraries
 import axios, { AxiosResponse, Method } from 'axios'
+
+// Internal modules
 import { API_BASE_URL } from './constants'
 import { APIError, ERROR_MAP, HttpStatusCodes } from './apiError'
 import Task from '../interfaces/Task'
