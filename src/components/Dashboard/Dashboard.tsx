@@ -3,11 +3,18 @@ import CategoryBar from '../CategoryBar/CategoryBar'
 import AddTaskCard from '../AddTaskCard/AddTaskCard'
 import TaskCard from '../TaskCard/TaskCard'
 import './Dashboard.css'
-import { IResponse } from '../../../services/apiClient'
-import { IDashboardState, ITask } from '../../types'
+import { IDashboardState } from '../../types'
+import Task from '../../../interfaces/Task'
+import AppState from '../../../interfaces/AppState'
 import ApiClient from '../../../services/apiClient'
+import Response from '../../../interfaces/Response'
 
-const Dashboard: React.FC = () => {
+interface IDashboardProps {
+    appState: AppState
+    setAppState: React.Dispatch<React.SetStateAction<AppState>>
+}
+
+const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
         categories: ['Home', 'Chores', 'Work', 'School'],
         tasks: [
@@ -21,18 +28,18 @@ const Dashboard: React.FC = () => {
             },
             {
                 id: 'me',
-                title: 'Task Name',
-                vibe: 'Playlist Name',
-                category: 'Category',
-                duration: 10,
+                title: 'Folding Clothes',
+                vibe: 'Good Vibes Laundry',
+                category: 'Chores',
+                duration: 20,
                 playlistId: 'me'
             },
             {
                 id: 'me',
-                title: 'Task Name',
-                vibe: 'Playlist Name',
+                title: 'Study',
+                vibe: 'Chill Lofi Study Beats',
                 category: 'Category',
-                duration: 10,
+                duration: 90,
                 playlistId: 'me'
             }
         ],
@@ -44,15 +51,15 @@ const Dashboard: React.FC = () => {
     }, [dashboardState.currentCategory, dashboardState.tasks.length])
 
     /**
-     * @todo Implement getTasks() in ApiClient.ts
+     * <>@todo Implement getTasks() in ApiClient.ts
      */
 
     const getTasks = async () => {
         try {
-            const response: IResponse = await ApiClient.getTasks()
+            const response: Response<Task[]> = await ApiClient.getTasks()
             setDashboardState(prevState => ({
                 ...prevState,
-                tasks: response.data.tasks
+                tasks: response.data
             }))
         } catch (error) {
             console.error('Failed to get tasks:', error)
@@ -77,12 +84,14 @@ const Dashboard: React.FC = () => {
                     dashboardState={dashboardState}
                     setDashboardState={setDashboardState}
                 />
-                {selectedTasks.map((task: ITask, index) => (
+                {selectedTasks.map((task: Task, index) => (
                     <TaskCard
                         key={index}
                         task={task}
                         dashboardState={dashboardState}
                         setDashboardState={setDashboardState}
+                        appState={appState}
+                        setAppState={setAppState}
                     />
                 ))}
             </section>

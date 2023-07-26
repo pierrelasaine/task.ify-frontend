@@ -1,0 +1,40 @@
+
+.task-bar {
+    display: flex;
+    height: 8em;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-container);
+    border-radius: 30px;
+    margin-bottom: 2em;
+    padding: 0em 1em;
+    position: fixed;
+    bottom: 2em;
+    left: 12em;
+    right: 12em;
+}
+
+.play-pause-button {
+    height: 6em;
+    width: 6em;
+    border-radius: 20px;
+    background-color: var(--tertiary);
+}
+
+.play-pause-button h1 {
+    margin: 0;
+}
+
+.do-task-column {
+    color: var(--on-secondary-container);
+    width: 100%;
+}
+
+.do-task-row1 {
+    font-size: 2em;
+}
+
+.do-task-row2 {
+    height: 50%;
+    color: var(--secondary);
+}

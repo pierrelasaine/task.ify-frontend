@@ -1,8 +1,9 @@
 import { ReactElement } from "react"
+import AppState from '../interfaces/AppState'
+import Task from '../interfaces/Task'
 
-export interface AppState {
-    isAuthenticated: boolean
-    doMode: boolean
+export interface IAppStateProp {
+    appState: AppState
 }
 
 export interface NavProps {
@@ -24,7 +25,7 @@ export interface ProtectedRouteProps {
 
 export interface IDashboardState {
     categories: string[]
-    tasks: ITask[]
+    tasks: Task[]
     currentCategory: string
 }
 
@@ -36,13 +37,4 @@ export interface ICategoryBarProps {
 export interface AddTaskCardContentsProps {
     isActive: boolean
     toggleActive: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-export interface ITask {
-    id: string
-    title: string
-    category: string
-    vibe: string
-    duration: number
-    playlistId: string
 }
