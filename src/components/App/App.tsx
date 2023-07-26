@@ -8,9 +8,10 @@ import LandingPage from '../LandingPage/LandingPage'
 import Dashboard from '../Dashboard/Dashboard'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Do from '../Do/Do'
+import { AppState } from '../../types'
 
 const App: React.FC = () => {
-    const [appState, setAppState] = useState({
+    const [appState, setAppState] = useState<AppState>({
         isAuthenticated: false,
         doTask: null
     })
@@ -61,7 +62,12 @@ const App: React.FC = () => {
                             path='/dashboard'
                             element={
                                 <ProtectedRoute
-                                    element={<Dashboard appState={appState} />}
+                                    element={
+                                        <Dashboard
+                                            appState={appState}
+                                            setAppState={setAppState}
+                                        />
+                                    }
                                     appState={appState}
                                     isLoading={isLoading}
                                     fallback={'/'}
@@ -83,7 +89,12 @@ const App: React.FC = () => {
                             path='*'
                             element={
                                 <ProtectedRoute
-                                    element={<Dashboard appState={appState} />}
+                                    element={
+                                        <Dashboard
+                                            appState={appState}
+                                            setAppState={setAppState}
+                                        />
+                                    }
                                     appState={appState}
                                     isLoading={isLoading}
                                     fallback={'/'}

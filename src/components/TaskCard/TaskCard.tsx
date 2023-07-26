@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { ITask, IDashboardState, AppState } from '../../types'
 import './TaskCard.css'
+import ApiClient from '../../../services/apiClient'
+import { useEffect, useState } from 'react'
 
 interface ITaskCardProps {
     key: number
@@ -8,24 +10,50 @@ interface ITaskCardProps {
     dashboardState: IDashboardState
     setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
     appState: AppState
+    setAppState: React.Dispatch<React.SetStateAction<AppState>>
 }
 
-const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
+const TaskCard: React.FC<ITaskCardProps> = ({ task, setDashboardState, setAppState }) => {
+    const [playlistCoverUrl, setPlaylistCoverUrl] = useState('')
+
     const navigate = useNavigate()
-    /**
-     * <>@todo set up complete task button
-     * <>@todo set up delete task button
-     */
-    // const handleDelete = () => {
-    //     console.log('delete task')
-    // }
-    /**
-     * on start task, change to do mode
-     */
+
+    useEffect(() => {
+        fetchPlaylistCover()
+    }, [task.id])
+
     const startTask = () => {
-        console.log('start task')
+        setAppState(prevState => ({
+            ...prevState,
+            doTask: task
+        }))
         navigate('/do')
     }
+
+    const fetchPlaylistCover = async () => {
+        try {
+            const { data: playlistCover } =
+                await ApiClient.getPlaylistCover(task.id)
+            setPlaylistCoverUrl(playlistCover.url)
+        } catch (error) {
+            console.error('Failed to get playlist cover:', error)
+        }
+    }
+
+    const deleteTask = async () => {
+        try {
+            await ApiClient.deleteTask(task.id)
+            setDashboardState(prevState => ({
+                ...prevState,
+                tasks: prevState.tasks.filter(
+                    (task: ITask) => task.id !== task.id
+                )
+            }))
+        } catch (error) {
+            console.error('Failed to delete task:', error)
+        }
+    }
+
     return (
         <div className='task-card'>
             <button
@@ -42,14 +70,17 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
                     <h2 className='playlist-name'>{task.vibe}</h2>
                 </section>
                 <section className='task-row'>
+                    <span className='delete-spacer'></span>
                     <section className='time-box'>
                         <h1 className='time'>{task.duration}:00</h1>
                     </section>
+                    <button className='delete-button' onClick={deleteTask}> X </button>
                 </section>
             </section>
-            <button className='playlist-button'>
-                <h1>&lt;</h1>
-            </button>
+            <img
+                className='playlist-button'
+                src={playlistCoverUrl}
+            />
         </div>
     )
 }

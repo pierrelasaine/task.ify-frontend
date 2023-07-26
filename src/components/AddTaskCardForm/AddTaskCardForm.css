@@ -38,6 +38,7 @@
     background-color: var(--tertiary-container);
     color: var(--on-tertiary-container);
     margin-top: 1em;
+    margin-right: 60px;
     height: 3em;
     width: 50%;
     border-radius: 15px;
@@ -83,4 +84,12 @@
     width: 11em;
     border-radius: 30px;
     color: var(--on-tertiary);
+}
+
+.back {
+    background: none;
+    font-size: large;
+    height: 2.6em;
+    width: 60px;
+    margin-top: .8em;
 }

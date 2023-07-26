@@ -83,3 +83,18 @@
 .playlist-button h1 {
     margin: 0;
 }
+
+.delete-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--error);
+    color: var(--on-error);
+    height: 1em;
+    width: 9%;
+    margin-top: 2em;
+}
+
+.delete-spacer {
+    width: 9%;
+}
