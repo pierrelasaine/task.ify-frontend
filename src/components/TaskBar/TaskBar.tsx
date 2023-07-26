@@ -1,8 +1,8 @@
-import { ITask } from '../../types'
+import Task from '../../../interfaces/Task'
 import './TaskBar.css'
 
 interface ITaskProp {
-    task: ITask | null
+    task: Task | null
     togglePlayPause: () => void
     isPlaying: boolean
 }

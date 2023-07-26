@@ -40,7 +40,7 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
         e.preventDefault()
         try {
             const response = await ApiClient.addTask({
-                taskName: formData.taskName,
+                title: formData.taskName,
                 vibe: formData.vibe,
                 duration: Number(formData.duration),
                 category: formData.category

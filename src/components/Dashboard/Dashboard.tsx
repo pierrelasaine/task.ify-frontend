@@ -3,9 +3,11 @@ import CategoryBar from '../CategoryBar/CategoryBar'
 import AddTaskCard from '../AddTaskCard/AddTaskCard'
 import TaskCard from '../TaskCard/TaskCard'
 import './Dashboard.css'
-import { IResponse } from '../../../services/apiClient'
-import { IDashboardState, ITask, AppState } from '../../types'
+import { IDashboardState } from '../../types'
+import Task from '../../../interfaces/Task'
+import AppState from '../../../interfaces/AppState'
 import ApiClient from '../../../services/apiClient'
+import Response from '../../../interfaces/Response'
 
 interface IDashboardProps {
     appState: AppState
@@ -54,10 +56,10 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
 
     const getTasks = async () => {
         try {
-            const response: IResponse = await ApiClient.getTasks()
+            const response: Response<Task[]> = await ApiClient.getTasks()
             setDashboardState(prevState => ({
                 ...prevState,
-                tasks: response.data.tasks
+                tasks: response.data
             }))
         } catch (error) {
             console.error('Failed to get tasks:', error)
@@ -82,7 +84,7 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
                     dashboardState={dashboardState}
                     setDashboardState={setDashboardState}
                 />
-                {selectedTasks.map((task: ITask, index) => (
+                {selectedTasks.map((task: Task, index) => (
                     <TaskCard
                         key={index}
                         task={task}
