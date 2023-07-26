@@ -1,5 +1,8 @@
+/// <reference types="@types/spotify-web-playback-sdk"/>
+
 import { ITask, IDashboardState } from '../../types'
 import './TaskCard.css'
+import { useState, useEffect } from 'react'
 
 interface ITaskCardProps {
     key: number
@@ -7,7 +10,13 @@ interface ITaskCardProps {
     dashboardState: IDashboardState
     setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
 }
-
+// declare global {
+//     interface Window {
+//         onSpotifyWebPlaybackSDKReady: () => void;
+//         Spotify:  () => void;
+//     } 
+// }
+    
 const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
     /**
      * @todo set up complete task button
@@ -22,11 +31,14 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task }) => {
     const startTask = () => {
         console.log('start task')
     }
+
     return (
         <div className='task-card'>
             <button
                 className='play-button'
-                onClick={startTask}>
+                onClick={()=>{
+                    startTask;
+                    }}>
                 <h1>&gt;</h1>
             </button>
             <section className='task-column'>

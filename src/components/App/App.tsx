@@ -7,6 +7,7 @@ import Navbar from '../Navbar/Navbar'
 import LandingPage from '../LandingPage/LandingPage'
 import Dashboard from '../Dashboard/Dashboard'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import WebPlayback from '../WebPlayback/WebPlayback'
 
 const App: React.FC = () => {
     const [appState, setAppState] = useState({
@@ -66,6 +67,10 @@ const App: React.FC = () => {
                                     fallback={'/'}
                                 />
                             }
+                        />
+                        <Route
+                            path='/fernsPlayer'
+                            element={<WebPlayback />}
                         />
                     </Routes>
                 </BrowserRouter>

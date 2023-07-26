@@ -97,6 +97,13 @@ class ApiClient {
     /**
      * @todo make routes for completing and deleting tasks
      */
+
+    /**
+     * Fetches users access token
+     */
+    async fetchAccessToken(): Promise<IResponse> {
+        return this.request({endpoint: 'user/spotifyuser', method: 'GET'})
+    }
 }
 
 export default new ApiClient(API_BASE_URL)
