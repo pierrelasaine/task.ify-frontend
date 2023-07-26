@@ -8,7 +8,9 @@ import LandingPage from '../LandingPage/LandingPage'
 import Dashboard from '../Dashboard/Dashboard'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import Do from '../Do/Do'
-import { AppState } from '../../types'
+import AppState from '../../../interfaces/AppState'
+import SessionResponse from '../../../interfaces/SessionResponse'
+import Response from '../../../interfaces/Response'
 
 const App: React.FC = () => {
     const [appState, setAppState] = useState<AppState>({
@@ -23,7 +25,8 @@ const App: React.FC = () => {
 
     const checkAuthenticationStatus = async () => {
         try {
-            const response = await ApiClient.checkSessionStatus()
+            const response: Response<SessionResponse> =
+                await ApiClient.checkSessionStatus()
             setAppState(prevState => ({
                 ...prevState,
                 isAuthenticated: response.data.isAuthenticated

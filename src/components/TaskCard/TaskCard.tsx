@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom'
-import { ITask, IDashboardState, AppState } from '../../types'
+import { IDashboardState } from '../../types'
 import './TaskCard.css'
 import ApiClient from '../../../services/apiClient'
 import { useEffect, useState } from 'react'
+import Task from '../../../interfaces/Task'
+import AppState from '../../../interfaces/AppState'
 
 interface ITaskCardProps {
     key: number
-    task: ITask
+    task: Task
     dashboardState: IDashboardState
     setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
     appState: AppState
@@ -46,7 +48,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task, setDashboardState, setAppSta
             setDashboardState(prevState => ({
                 ...prevState,
                 tasks: prevState.tasks.filter(
-                    (task: ITask) => task.id !== task.id
+                    (task: Task) => task.id !== task.id
                 )
             }))
         } catch (error) {

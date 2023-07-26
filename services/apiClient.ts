@@ -1,113 +1,152 @@
-import axios, { AxiosResponse } from 'axios'
+// External libraries
+import axios, { AxiosResponse, Method } from 'axios'
+
+// Internal modules
 import { API_BASE_URL } from './constants'
+import { APIError, ERROR_MAP, HttpStatusCodes } from './apiError'
+import Task from '../interfaces/Task'
+import Response from '../interfaces/Response'
+import SessionResponse from '../interfaces/SessionResponse'
+import PlaylistCover from '../interfaces/PlaylistCover'
 
-/**
- * Configuration for API requests
- */
-interface IConfig {
+interface Config {
     endpoint: string
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE'
-    data?: any
+    method: Method
+    data?: unknown
 }
 
-/**
- * Structure of the response from API requests
- */
-export interface IResponse {
-    data: any
-    error: any | null
+interface TaskFormData {
+    title: string
+    category: string
+    vibe: string
+    duration: number
 }
 
-/**
- * Class for making requests to the API
- */
+enum HTTPMethods {
+    GET = 'GET',
+    POST = 'POST',
+    PUT = 'PUT',
+    DELETE = 'DELETE'
+}
+
 class ApiClient {
-    private remoteHostUrl: string
+    private axiosInstance: typeof axios
+    private windowObject: Window | null
 
-    /**
-     * Constructor for the ApiClient class
-     * @param remoteHostUrl - Base URL for the API
-     */
-    constructor(remoteHostUrl: string) {
-        this.remoteHostUrl = remoteHostUrl
+    constructor(axiosInstance: any, windowObject?: any) {
+        this.axiosInstance = axiosInstance
+        this.axiosInstance.defaults.headers.common['Content-Type'] =
+            'application/json'
+        this.windowObject =
+            windowObject || (typeof window !== 'undefined' ? window : null)
     }
 
     /**
-     * Makes a request to the API
-     * @param {IConfig} config - Configuration for the request
-     * @returns {Promise<IResponse>} Response from the server
+     * Sends a request to the specified endpoint.
      */
-    async request({
+    async request<T>({
         endpoint,
         method,
         data = {}
-    }: IConfig): Promise<IResponse> {
-        const url = `${this.remoteHostUrl}/${endpoint}`
-        const headers = {
-            'Content-Type': 'application/json'
-        }
-
+    }: Config): Promise<Response<T>> {
         try {
-            const res: AxiosResponse<IResponse> = await axios({
-                url,
+            const res: AxiosResponse<Response<T>> = await this.axiosInstance({
+                url: `${API_BASE_URL}/${endpoint}`,
                 method,
                 data,
-                headers,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
                 withCredentials: true
             })
-            return { data: res.data, error: null }
+            return res.data
         } catch (error: any) {
-            console.error(error.response?.status, error.response?.data.error)
-            throw error
+            const errorMessage =
+                error.response &&
+                typeof error.response.status === 'number' &&
+                error.response.status in HttpStatusCodes
+                    ? ERROR_MAP[error.response.status] ||
+                      error.response.data.error
+                    : 'An unexpected error occurred.'
+
+            throw new APIError(
+                errorMessage,
+                error.response?.status,
+                endpoint,
+                error
+            )
         }
     }
 
     /**
-     * Initiates OAuth with Spotify
-     * @returns {Promise<IResponse>} Response from the server
+     * Starts Spotify OAuth process.
      */
     async spotifyOAuth() {
-        window.location.href = 'http://localhost:3001/oauth/login'
+        if (this.windowObject) {
+            this.windowObject.location.href = `${API_BASE_URL}/oauth/login`
+        } else {
+            console.error('Window object is not available.')
+        }
     }
 
     /**
-     * Checks session status to see if user is authenticated.
-     * @returns {Promise<IResponse>} Response from the server
+     * Ends the user session.
      */
-    async checkSessionStatus() {
-        const sessionStatus = this.request({
-            endpoint: 'oauth/session-status',
-            method: 'GET'
-        })
-
-        return sessionStatus
-    }
-
     async logout() {
-        return this.request({ endpoint: 'oauth/logout', method: 'GET' })
+        return this.request({
+            endpoint: 'oauth/logout',
+            method: HTTPMethods.GET
+        })
     }
 
     /**
-     * <>@todo set up endpoint for fetching tasks from database
+     * Verifies user session status.
      */
-    async getTasks(): Promise<IResponse> {
-        return this.request({ endpoint: 'tasks/', method: 'GET' })
-    }
-
-    async addTask(task: any): Promise<IResponse> {
-        return this.request({ endpoint: 'gpt/generateplaylist', method: 'POST', data: task })
-    }
-
-    async deleteTask(taskId: string): Promise<IResponse> {
-        return this.request({ endpoint: `tasks/${taskId}`, method: 'DELETE' })
+    async checkSessionStatus(): Promise<Response<SessionResponse>> {
+        return this.request({
+            endpoint: 'oauth/session-status',
+            method: HTTPMethods.GET
+        })
     }
 
     /**
-     * @todo modify route response interfaces/types
+     * Retrieves all tasks.
      */
-    async getPlaylistCover(taskId: string): Promise<IResponse> {
-        return this.request({ endpoint: `tasks/${taskId}/playlistcover`, method: 'GET' })
+    async getTasks(): Promise<Response<Task[]>> {
+        return this.request({ endpoint: 'tasks', method: HTTPMethods.GET })
+    }
+
+    /**
+     * Adds a new task.
+     */
+    async addTask(task: TaskFormData): Promise<Response> {
+        return this.request({
+            endpoint: 'gpt/generateplaylist',
+            method: HTTPMethods.POST,
+            data: task
+        })
+    }
+
+    /**
+     * Removes a task based on its ID.
+     */
+    async deleteTask(taskId: string): Promise<Response> {
+        return this.request({
+            endpoint: `tasks/${taskId}`,
+            method: HTTPMethods.DELETE
+        })
+    }
+
+    /**
+     * Fetches playlist cover by task ID.
+     */
+    async getPlaylistCover(taskId: string): Promise<Response<PlaylistCover>> {
+        return this.request({
+            endpoint: `tasks/${taskId}/playlistcover`,
+            method: HTTPMethods.GET
+        })
     }
 }
 
-export default new ApiClient(API_BASE_URL)
+export default new ApiClient(axios)
+export { ApiClient }
