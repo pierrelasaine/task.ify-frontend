@@ -12,7 +12,7 @@ const AddTaskCardContents: React.FC<AddTaskCardContentsProps> = ({
     }
 
     return isActive ? (
-        <AddTaskCardForm />
+        <AddTaskCardForm toggleActive={toggleActive}/>
     ) : (
         <>
             <button

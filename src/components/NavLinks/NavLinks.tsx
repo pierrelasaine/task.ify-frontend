@@ -15,8 +15,22 @@ const NavLinks: React.FC<INavLinks> = ({ appState }) => {
         navigate('/')
     }
 
-    if (appState.doMode) {
-        return <></>
+    const handleReturn = () => {
+        /**
+         * @todo handle return logic
+         */
+        navigate('/dashboard')
+    }
+
+    /**
+     * @todo add link to dashboard
+     */
+    if (location.pathname === '/do') {
+        return (
+            <section className='nav-links'>
+                <button className='logout-button' onClick={handleReturn}>Return to Dashboard</button>
+            </section>
+        )
     } else if (appState.isAuthenticated) {
         return (
             <section className='nav-links'>

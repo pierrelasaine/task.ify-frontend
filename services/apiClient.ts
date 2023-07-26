@@ -88,15 +88,26 @@ class ApiClient {
     }
 
     /**
-     * @todo set up endpoint for fetching tasks from database
+     * <>@todo set up endpoint for fetching tasks from database
      */
     async getTasks(): Promise<IResponse> {
-        return this.request({ endpoint: 'oauth/tasks', method: 'GET' })
+        return this.request({ endpoint: 'tasks/', method: 'GET' })
+    }
+
+    async addTask(task: any): Promise<IResponse> {
+        return this.request({ endpoint: 'gpt/generateplaylist', method: 'POST', data: task })
+    }
+
+    async deleteTask(taskId: string): Promise<IResponse> {
+        return this.request({ endpoint: `tasks/${taskId}`, method: 'DELETE' })
     }
 
     /**
-     * @todo make routes for completing and deleting tasks
+     * @todo modify route response interfaces/types
      */
+    async getPlaylistCover(taskId: string): Promise<IResponse> {
+        return this.request({ endpoint: `tasks/${taskId}/playlistcover`, method: 'GET' })
+    }
 }
 
 export default new ApiClient(API_BASE_URL)
