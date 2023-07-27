@@ -56,7 +56,8 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
 
     const getTasks = async () => {
         try {
-            const response: Response<Task[]> = await ApiClient.getTasks()
+            const token = localStorage.getItem('token')!
+            const response: Response<Task[]> = await ApiClient.getTasks(token)
             setDashboardState(prevState => ({
                 ...prevState,
                 tasks: response.data
