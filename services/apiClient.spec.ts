@@ -46,7 +46,10 @@ describe('ApiClient', () => {
     describe('checkSessionStatus', () => {
         it('should return session status data', async () => {
             const mockData = { isAuthenticated: true }
-            mock.onGet(`${API_BASE_URL}/oauth/session-status`).reply(200, mockData)
+            mock.onGet(`${API_BASE_URL}/oauth/session-status`).reply(
+                200,
+                mockData
+            )
 
             const response = await apiClient.checkSessionStatus()
 
@@ -69,7 +72,10 @@ describe('ApiClient', () => {
         it('should add a new task', async () => {
             const newTask = { title: 'New Task' }
             const responseData = { success: true, task: newTask }
-            mock.onPost(`${API_BASE_URL}/gpt/generateplaylist`).reply(200, responseData)
+            mock.onPost(`${API_BASE_URL}/gpt/generateplaylist`).reply(
+                200,
+                responseData
+            )
 
             const response = await apiClient.addTask(newTask)
 
@@ -81,7 +87,10 @@ describe('ApiClient', () => {
         it('should delete a task based on its ID', async () => {
             const mockData = { success: true }
             const taskId = '1234'
-            mock.onDelete(`${API_BASE_URL}/tasks/${taskId}`).reply(200, mockData)
+            mock.onDelete(`${API_BASE_URL}/tasks/${taskId}`).reply(
+                200,
+                mockData
+            )
 
             const response = await apiClient.deleteTask(taskId)
 
@@ -93,7 +102,10 @@ describe('ApiClient', () => {
         it('should fetch a playlist cover based on task ID', async () => {
             const mockData = { coverURL: 'http://example.com/cover.jpg' }
             const taskId = '1234'
-            mock.onGet(`${API_BASE_URL}/tasks/${taskId}/playlistcover`).reply(200, mockData)
+            mock.onGet(`${API_BASE_URL}/tasks/${taskId}/playlistcover`).reply(
+                200,
+                mockData
+            )
 
             const response = await apiClient.getPlaylistCover(taskId)
 
@@ -104,7 +116,10 @@ describe('ApiClient', () => {
     describe('error handling', () => {
         it('should throw error on checkSessionStatus failure', async () => {
             const errorResponse = { error: 'Server error' }
-            mock.onGet(`${API_BASE_URL}/oauth/session-status`).reply(500, errorResponse)
+            mock.onGet(`${API_BASE_URL}/oauth/session-status`).reply(
+                500,
+                errorResponse
+            )
 
             await expect(apiClient.checkSessionStatus()).rejects.toThrow(
                 'Internal server error. Please try again later.'
