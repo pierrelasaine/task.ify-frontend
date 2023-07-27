@@ -16,10 +16,13 @@ interface Config {
 }
 
 interface TaskFormData {
-    title: string
-    category: string
-    vibe: string
-    duration: number
+    task: {
+        title: string
+        category: string
+        vibe: string
+        duration: number
+    }
+    token: string
 }
 
 enum HTTPMethods {
@@ -71,7 +74,7 @@ class ApiClient {
 
             throw new APIError(
                 errorMessage,
-                error.response?.status,
+                error.response.status,
                 endpoint,
                 error
             )
@@ -112,27 +115,31 @@ class ApiClient {
     /**
      * Retrieves all tasks.
      */
-    async getTasks(): Promise<Response<Task[]>> {
-        return this.request({ endpoint: 'tasks', method: HTTPMethods.GET })
+    async getTasks(token: string): Promise<Response<Task[]>> {
+        return this.request({
+            endpoint: 'tasks',
+            method: HTTPMethods.GET,
+            data: token
+        })
     }
 
     /**
      * Adds a new task.
      */
-    async addTask(task: TaskFormData): Promise<Response> {
+    async addTask({ task, token }: TaskFormData): Promise<Response> {
         return this.request({
             endpoint: 'gpt/generateplaylist',
             method: HTTPMethods.POST,
-            data: task
+            data: { task, token }
         })
     }
 
     /**
      * Removes a task based on its ID.
      */
-    async deleteTask(taskId: string): Promise<Response> {
+    async deleteTask(playlistId: string): Promise<Response> {
         return this.request({
-            endpoint: `tasks/${taskId}`,
+            endpoint: `tasks/${playlistId}`,
             method: HTTPMethods.DELETE
         })
     }
@@ -140,9 +147,11 @@ class ApiClient {
     /**
      * Fetches playlist cover by task ID.
      */
-    async getPlaylistCover(taskId: string): Promise<Response<PlaylistCover>> {
+    async getPlaylistCover(
+        playlistId: string
+    ): Promise<Response<PlaylistCover>> {
         return this.request({
-            endpoint: `tasks/${taskId}/playlistcover`,
+            endpoint: `tasks/${playlistId}/playlistcover`,
             method: HTTPMethods.GET
         })
     }

@@ -15,7 +15,11 @@ interface ITaskCardProps {
     setAppState: React.Dispatch<React.SetStateAction<AppState>>
 }
 
-const TaskCard: React.FC<ITaskCardProps> = ({ task, setDashboardState, setAppState }) => {
+const TaskCard: React.FC<ITaskCardProps> = ({
+    task,
+    setDashboardState,
+    setAppState
+}) => {
     const [playlistCoverUrl, setPlaylistCoverUrl] = useState('')
 
     const navigate = useNavigate()
@@ -34,8 +38,9 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task, setDashboardState, setAppSta
 
     const fetchPlaylistCover = async () => {
         try {
-            const { data: playlistCover } =
-                await ApiClient.getPlaylistCover(task.id)
+            const { data: playlistCover } = await ApiClient.getPlaylistCover(
+                task.playlistId
+            )
             setPlaylistCoverUrl(playlistCover.url)
         } catch (error) {
             console.error('Failed to get playlist cover:', error)
@@ -44,7 +49,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task, setDashboardState, setAppSta
 
     const deleteTask = async () => {
         try {
-            await ApiClient.deleteTask(task.id)
+            await ApiClient.deleteTask(task.playlistId)
             setDashboardState(prevState => ({
                 ...prevState,
                 tasks: prevState.tasks.filter(
@@ -78,7 +83,12 @@ const TaskCard: React.FC<ITaskCardProps> = ({ task, setDashboardState, setAppSta
                     <section className='time-box'>
                         <h1 className='time'>{task.duration}:00</h1>
                     </section>
-                    <button className='delete-button' onClick={deleteTask}> X </button>
+                    <button
+                        className='delete-button'
+                        onClick={deleteTask}>
+                        {' '}
+                        X{' '}
+                    </button>
                 </section>
             </section>
             <img

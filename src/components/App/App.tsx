@@ -32,6 +32,7 @@ const App: React.FC = () => {
                 ...prevState,
                 isAuthenticated: response.data.isAuthenticated
             }))
+            localStorage.setItem('token', response.data.token)
         } catch (error) {
             console.error('Failed to check authentication status:', error)
         } finally {

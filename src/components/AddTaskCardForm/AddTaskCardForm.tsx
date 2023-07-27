@@ -11,39 +11,27 @@ interface IAddTaskCardFormProps {
 const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
     const [formData, setFormData] = useState({
         taskName: '',
-        /**
-         * @supportqueue vibe is running on empty
-         */
-        vibe: 'Chill',
+        vibe: '',
         duration: '',
         category: ''
     })
     /**
-     * <>@todo add a task form that adds a task to the database
-     */
-    /**
-     * <>@todo animate dashboard to slide down when switching modes.
-     * <>@todo animate add-task-card section to expand when form isActive
-     * <>@todo animate tertiary selection on the form
-     * <>@todo animate fade in for new card on feed
-     * <>@todo animate task card to lift on hover
-     * <>@todo animate play button to lift on hover/ press on click
-     * <>@todo animate transition in from spotify redirect
-     * <>@todo animate fade in for form components when form isActive
-     * <>@todo vertically center category bar
-     * <>@todo add hover effect to category bar
-     * <>@todo add delete task button
-     * <>@todo add short tour feature fab to stretch backlog.
+     * @todo add default field for vibe
+     * @todo error handling for form
      */
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
+            const token = localStorage.getItem('token')!
             const response = await ApiClient.addTask({
-                title: formData.taskName,
-                vibe: formData.vibe,
-                duration: Number(formData.duration),
-                category: formData.category
+                task: {
+                    title: formData.taskName,
+                    vibe: formData.vibe,
+                    duration: Number(formData.duration),
+                    category: formData.category
+                },
+                token: token
             })
             if (response) toggleActive(false)
         } catch (error) {
@@ -90,7 +78,6 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
                         className='input-field'
                         id='vibe'
                         name='vibe'
-                        value={formData.vibe}
                         onChange={e =>
                             setFormData({ ...formData, vibe: e.target.value })
                         }>
