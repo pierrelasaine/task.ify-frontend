@@ -1,4 +1,4 @@
-import { NavProps } from '../../types'
+import NavProps from '../../../interfaces/NavProps'
 import './LandingPage.css'
 
 const LandingPage: React.FC<NavProps> = ({ handleClick }) => {
