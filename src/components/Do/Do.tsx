@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { IAppStateProp } from '../../types'
+import AppState from '../../../interfaces/AppState'
 import TaskBar from '../TaskBar/TaskBar'
 
 import './Do.css'
 
+export interface IAppStateProp {
+    appState: AppState
+}
+
 const Do: React.FC<IAppStateProp> = ({ appState }) => {
     const task = appState.doTask!
 
-    const [timeLeft, setTimeLeft] = useState<number>(task.duration * 60)
+    const [timeLeft, setTimeLeft] = useState<number>(task.timer * 60)
     const [isPlaying, setIsPlaying] = useState(true)
 
     useEffect(() => {
@@ -34,7 +38,7 @@ const Do: React.FC<IAppStateProp> = ({ appState }) => {
 
     return (
         <section className='do'>
-            <h2 className='do-task-name'>{task?.title}</h2>
+            <h2 className='do-task-name'>{task?.taskName}</h2>
             <section className='timer'>
                 <h1 className='time-value'>{formatTime(timeLeft)}</h1>
             </section>

@@ -1,7 +1,11 @@
-import { AddTaskCardContentsProps } from '../../types'
 import AddTaskCardForm from '../AddTaskCardForm/AddTaskCardForm'
 import './AddTaskCardContents.css'
 import { Skeleton } from '@mui/material'
+
+interface AddTaskCardContentsProps {
+    isActive: boolean
+    toggleActive: React.Dispatch<React.SetStateAction<boolean>>
+}
 
 const AddTaskCardContents: React.FC<AddTaskCardContentsProps> = ({
     isActive,
