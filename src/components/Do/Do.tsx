@@ -38,8 +38,8 @@ const Do: React.FC<IAppStateProp> = ({ appState }) => {
 
     return (
         <section className='do'>
-            <h2 className='do-task-name'>{task?.taskName}</h2>
-            <section className='timer'>
+            <h2 className='do-task-name'>{task.taskName}</h2>
+            <section className='timer-box'>
                 <h1 className='time-value'>{formatTime(timeLeft)}</h1>
             </section>
             <TaskBar

@@ -30,7 +30,7 @@
     align-items: left;
 }
 
-.taskifier-taskName {
+.taskifier-title {
     color: var(--secondary);
 }
 

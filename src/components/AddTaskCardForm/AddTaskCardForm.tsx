@@ -47,7 +47,7 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
         <form onSubmit={handleSubmit}>
             <section className='form-row'>
                 <section className='form-col'>
-                    <h2 className='taskifier-taskName'>Task.ifier</h2>
+                    <h2 className='taskifier-title'>Task.ifier</h2>
                     <section className='generate-square'></section>
                 </section>
                 <section className='inputs-col'>
