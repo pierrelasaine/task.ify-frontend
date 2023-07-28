@@ -26,7 +26,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({
 
     useEffect(() => {
         fetchPlaylistCover()
-    }, [task.id])
+    }, [task.playlist_id])
 
     const startTask = () => {
         setAppState(prevState => ({
@@ -39,7 +39,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({
     const fetchPlaylistCover = async () => {
         try {
             const { data: playlistCover } = await ApiClient.getPlaylistCover(
-                task.playlistId
+                task.playlist_id
             )
             setPlaylistCoverUrl(playlistCover.url)
         } catch (error) {
@@ -49,11 +49,11 @@ const TaskCard: React.FC<ITaskCardProps> = ({
 
     const deleteTask = async () => {
         try {
-            await ApiClient.deleteTask(task.playlistId)
+            await ApiClient.deleteTask(task.playlist_id)
             setDashboardState(prevState => ({
                 ...prevState,
                 tasks: prevState.tasks.filter(
-                    (task: Task) => task.id !== task.id
+                    (currentTask: Task) => currentTask.task_id !== task.task_id
                 )
             }))
         } catch (error) {
@@ -73,7 +73,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({
                  * <>@todo add task name and task playlist name
                  */}
                 <section className='task-row'>
-                    <h2 className='task-name'>{task.taskName}</h2>
+                    <h2 className='task-name'>{task.task_name}</h2>
                     <h2 className='playlist-name'>{task.vibe}</h2>
                 </section>
                 <section className='task-row'>

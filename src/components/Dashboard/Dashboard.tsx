@@ -18,38 +18,13 @@ interface IDashboardProps {
 const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
         categories: ['Home', 'Chores', 'Work', 'School'],
-        tasks: [
-            {
-                id: 'me',
-                taskName: 'Task Name',
-                vibe: 'Playlist Name',
-                category: 'Category',
-                timer: 10,
-                playlistId: 'me'
-            },
-            {
-                id: 'me',
-                taskName: 'Folding Clothes',
-                vibe: 'Good Vibes Laundry',
-                category: 'Chores',
-                timer: 20,
-                playlistId: 'me'
-            },
-            {
-                id: 'me',
-                taskName: 'Study',
-                vibe: 'Chill Lofi Study Beats',
-                category: 'Category',
-                timer: 90,
-                playlistId: 'me'
-            }
-        ],
+        tasks: [],
         currentCategory: 'Home'
     })
 
     useEffect(() => {
         getTasks()
-    }, [dashboardState.currentCategory, dashboardState.tasks.length])
+    }, [dashboardState.currentCategory, dashboardState.tasks?.length])
 
     /**
      * <>@todo Implement getTasks() in ApiClient.ts
@@ -71,7 +46,7 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
     let selectedTasks =
         dashboardState.currentCategory === 'Home'
             ? dashboardState.tasks
-            : dashboardState.tasks.filter(
+            : dashboardState.tasks?.filter(
                   task => task.category === dashboardState.currentCategory
               )
 
@@ -86,7 +61,7 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
                     dashboardState={dashboardState}
                     setDashboardState={setDashboardState}
                 />
-                {selectedTasks.map((task: Task, index) => (
+                {selectedTasks?.map((task: Task, index) => (
                     <TaskCard
                         key={index}
                         task={task}
