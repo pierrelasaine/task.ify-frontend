@@ -59,7 +59,7 @@ describe('ApiClient', () => {
 
     describe('getTasks', () => {
         it('should fetch tasks from the database', async () => {
-            const mockTasks = [{ id: '1', title: 'Task 1' }]
+            const mockTasks = [{ id: '1', taskName: 'Task 1' }]
             mock.onGet(`${API_BASE_URL}/tasks`).reply(200, mockTasks)
 
             const response = await apiClient.getTasks()
@@ -70,7 +70,7 @@ describe('ApiClient', () => {
 
     describe('addTask', () => {
         it('should add a new task', async () => {
-            const newTask = { title: 'New Task' }
+            const newTask = { taskName: 'New Task' }
             const responseData = { success: true, task: newTask }
             mock.onPost(`${API_BASE_URL}/gpt/generateplaylist`).reply(
                 200,

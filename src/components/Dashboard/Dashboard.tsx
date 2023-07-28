@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import CategoryBar from '../CategoryBar/CategoryBar'
 import AddTaskCard from '../AddTaskCard/AddTaskCard'
 import TaskCard from '../TaskCard/TaskCard'
-import './Dashboard.css'
-import { IDashboardState } from '../../types'
+
+import ApiClient from '../../../services/apiClient'
+import IDashboardState from '../../../interfaces/IDashboardState'
 import Task from '../../../interfaces/Task'
 import AppState from '../../../interfaces/AppState'
-import ApiClient from '../../../services/apiClient'
 import Response from '../../../interfaces/Response'
+import './Dashboard.css'
 
 interface IDashboardProps {
     appState: AppState
@@ -20,26 +21,26 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
         tasks: [
             {
                 id: 'me',
-                title: 'Task Name',
+                taskName: 'Task Name',
                 vibe: 'Playlist Name',
                 category: 'Category',
-                duration: 10,
+                timer: 10,
                 playlistId: 'me'
             },
             {
                 id: 'me',
-                title: 'Folding Clothes',
+                taskName: 'Folding Clothes',
                 vibe: 'Good Vibes Laundry',
                 category: 'Chores',
-                duration: 20,
+                timer: 20,
                 playlistId: 'me'
             },
             {
                 id: 'me',
-                title: 'Study',
+                taskName: 'Study',
                 vibe: 'Chill Lofi Study Beats',
                 category: 'Category',
-                duration: 90,
+                timer: 90,
                 playlistId: 'me'
             }
         ],

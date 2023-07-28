@@ -8,7 +8,7 @@ const LandingPage: React.FC<NavProps> = ({ handleClick }) => {
                 <div className='tertiary-logo-box'>
                     <img src='/src/assets/triangle.png' />
                 </div>
-                <h1 className='primary-title'>Task.ify</h1>
+                <h1 className='primary-taskName'>Task.ify</h1>
             </section>
             <button className='spotify-login' onClick={handleClick}>
                 Log in with Spotify

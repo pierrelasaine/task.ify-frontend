@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import AddTaskCardContents from '../AddTaskCardContents/AddTaskCardContents'
-import { ICategoryBarProps } from '../../types'
+import IDashboardState from '../../../interfaces/IDashboardState'
 import './AddTaskCard.css'
 
-const AddTaskCard: React.FC<ICategoryBarProps> = () => {
+export interface IAddTaskCardProps {
+    dashboardState: IDashboardState
+    setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
+}
+
+const AddTaskCard: React.FC<IAddTaskCardProps> = () => {
     const [isActive, toggleActive] = useState(false)
     /**
      * <>@todo useContext to pass dashboardState and setDashboardState to AddTaskCardForm

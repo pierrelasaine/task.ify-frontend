@@ -19,7 +19,7 @@
     object-fit: contain;
 }
 
-.primary-title {
+.primary-taskName {
     margin-left: 0.2em;
     font-size: 150px;
     color: var(--primary);

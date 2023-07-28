@@ -17,10 +17,10 @@ interface Config {
 
 interface TaskFormData {
     task: {
-        title: string
+        taskName: string
         category: string
         vibe: string
-        duration: number
+        timer: number
     }
     token: string
 }

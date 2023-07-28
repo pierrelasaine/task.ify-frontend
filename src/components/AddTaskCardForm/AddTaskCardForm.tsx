@@ -12,7 +12,7 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
     const [formData, setFormData] = useState({
         taskName: '',
         vibe: '',
-        duration: '',
+        timer: '',
         category: ''
     })
     /**
@@ -26,9 +26,9 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
             const token = localStorage.getItem('token')!
             const response = await ApiClient.addTask({
                 task: {
-                    title: formData.taskName,
+                    taskName: formData.taskName,
                     vibe: formData.vibe,
-                    duration: Number(formData.duration),
+                    timer: Number(formData.timer),
                     category: formData.category
                 },
                 token: token
@@ -47,7 +47,7 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
         <form onSubmit={handleSubmit}>
             <section className='form-row'>
                 <section className='form-col'>
-                    <h2 className='taskifier-title'>Task.ifier</h2>
+                    <h2 className='taskifier-taskName'>Task.ifier</h2>
                     <section className='generate-square'></section>
                 </section>
                 <section className='inputs-col'>
@@ -88,20 +88,20 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
                         <option value='Party'>Party</option>
                     </select>
                     <label
-                        htmlFor='duration'
-                        className='duration'>
-                        Duration (in minutes)
+                        htmlFor='timer'
+                        className='timer'>
+                        timer (in minutes)
                     </label>
                     <input
                         type='number'
                         className='input-field'
-                        id='duration'
-                        name='duration'
-                        value={formData.duration}
+                        id='timer'
+                        name='timer'
+                        value={formData.timer}
                         onChange={e =>
                             setFormData({
                                 ...formData,
-                                duration: e.target.value
+                                timer: e.target.value
                             })
                         }
                     />

@@ -1,7 +1,12 @@
 import React from 'react'
-import { ICategoryBarProps } from '../../types'
+import IDashboardState from '../../../interfaces/IDashboardState'
 
 import './CategoryBar.css'
+
+export interface ICategoryBarProps {
+    dashboardState: IDashboardState
+    setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
+}
 
 const CategoryBar: React.FC<ICategoryBarProps> = ({
     dashboardState,

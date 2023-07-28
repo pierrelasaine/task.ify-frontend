@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { IDashboardState } from '../../types'
+import IDashboardState from '../../../interfaces/IDashboardState'
 import './TaskCard.css'
 import ApiClient from '../../../services/apiClient'
 import { useEffect, useState } from 'react'
@@ -73,13 +73,13 @@ const TaskCard: React.FC<ITaskCardProps> = ({
                  * <>@todo add task name and task playlist name
                  */}
                 <section className='task-row'>
-                    <h2 className='task-name'>{task.title}</h2>
+                    <h2 className='task-name'>{task.taskName}</h2>
                     <h2 className='playlist-name'>{task.vibe}</h2>
                 </section>
                 <section className='task-row'>
                     <span className='delete-spacer'></span>
                     <section className='time-box'>
-                        <h1 className='time'>{task.duration}:00</h1>
+                        <h1 className='time'>{task.timer}:00</h1>
                     </section>
                     <button
                         className='delete-button'
