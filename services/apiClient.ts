@@ -119,7 +119,7 @@ class ApiClient {
         return this.request({
             endpoint: 'tasks',
             method: HTTPMethods.GET,
-            data: token
+            data: { token }
         })
     }
 
