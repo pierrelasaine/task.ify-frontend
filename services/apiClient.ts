@@ -160,7 +160,7 @@ class ApiClient {
      * Fetches users access token
      */
     async fetchAccessToken(): Promise<Response> {
-        return this.request({endpoint: 'user/spotifyuser', method: 'GET'})
+        return this.request({endpoint: 'oauth/spotifyuser', method: 'GET'})
     }
 }
 

@@ -3,6 +3,96 @@
 import { useState, useEffect } from 'react'
 import ApiClient from '../../../services/apiClient'
 
+//to-be dead code
+
+// function generateRandomString(length: number): string {
+//   let text = '';
+//   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+//   for (let i = 0; i < length; i++) {
+//     text += possible.charAt(Math.floor(Math.random() * possible.length));
+//   }
+//   return text;
+// }
+
+// async function generateCodeChallenge(codeVerifier: string): Promise<string> {
+//   function base64encode(string: string): string {
+//     return btoa(string)
+//       .replace(/\+/g, '-')
+//       .replace(/\//g, '_')
+//       .replace(/=+$/, '');
+//   }
+
+//   const encoder = new TextEncoder();
+//   const data = encoder.encode(codeVerifier);
+//   const digest = await window.crypto.subtle.digest('SHA-256', data);
+
+// //   return base64encode(String.fromCharCode.apply(null, new Uint8Array(digest)));
+// const codeArray = Array.from(new Uint8Array(digest));
+// return base64encode(String.fromCharCode.apply(null, codeArray));
+// }
+
+// const clientId = 'd7527322ca104fe891303bb7837023e5';
+// const redirectUri = 'http://localhost:3001/oauth/callback';
+
+// const codeVerifier = generateRandomString(128);
+
+// generateCodeChallenge(codeVerifier).then((codeChallenge: string) => {
+//   const state = generateRandomString(16);
+//   const scope = 'user-read-private user-read-email';
+
+//   localStorage.setItem('code_verifier', codeVerifier);
+
+//   const args = new URLSearchParams({
+//     response_type: 'code',
+//     client_id: clientId,
+//     scope: scope,
+//     redirect_uri: redirectUri,
+//     state: state,
+//     code_challenge_method: 'S256',
+//     code_challenge: codeChallenge,
+//   });
+
+//   window.location.href = 'https://accounts.spotify.com/authorize?' + args.toString();
+// });
+
+// const urlParams = new URLSearchParams(window.location.search);
+// const code = urlParams.get('code');
+
+// const savedCodeVerifier = localStorage.getItem('code_verifier');
+
+// const body = new URLSearchParams({
+//   grant_type: 'authorization_code',
+//   code: code || '',
+//   redirect_uri: redirectUri,
+//   client_id: clientId,
+//   code_verifier: savedCodeVerifier || '',
+// });
+
+// (async () => {
+//   try {
+//     const response = await fetch('https://accounts.spotify.com/api/token', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/x-www-form-urlencoded',
+//       },
+//       body: body.toString(),
+//     });
+
+//     if (!response.ok) {
+//       throw new Error('HTTP status ' + response.status);
+//     }
+
+//     const data = await response.json();
+//     localStorage.setItem('access_token', data.access_token);
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// })();
+
+
+//end of to-be dead code
+
 interface Track {
     name: string;
     album: {
@@ -12,12 +102,16 @@ interface Track {
 }
 
 const initialTrack: Track = {
-    name: "Woods",
+    name: "",
     album: {
-        images: [{ url: "https://open.spotify.com/embed/track/3Qa944OTMZkg8DHjET8JQv?utm_source=generator" }]
+        images: [
+            { url: "" }
+        ]
     },
-    artists: [{ name: "Mac Miller" }]
-};
+    artists: [
+        { name: "" }
+    ]
+}
 
 function WebPlayback() {
 
