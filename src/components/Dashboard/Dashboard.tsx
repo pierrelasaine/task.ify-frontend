@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import CategoryBar from '../CategoryBar/CategoryBar'
 import AddTaskCard from '../AddTaskCard/AddTaskCard'
 import TaskCard from '../TaskCard/TaskCard'
-import './Dashboard.css'
-import { IDashboardState } from '../../types'
+
+import ApiClient from '../../../services/apiClient'
+import IDashboardState from '../../../interfaces/IDashboardState'
 import Task from '../../../interfaces/Task'
 import AppState from '../../../interfaces/AppState'
-import ApiClient from '../../../services/apiClient'
 import Response from '../../../interfaces/Response'
+import './Dashboard.css'
 
 interface IDashboardProps {
     appState: AppState
@@ -17,38 +18,13 @@ interface IDashboardProps {
 const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
         categories: ['Home', 'Chores', 'Work', 'School'],
-        tasks: [
-            {
-                id: 'me',
-                title: 'Task Name',
-                vibe: 'Playlist Name',
-                category: 'Category',
-                duration: 10,
-                playlistId: 'me'
-            },
-            {
-                id: 'me',
-                title: 'Folding Clothes',
-                vibe: 'Good Vibes Laundry',
-                category: 'Chores',
-                duration: 20,
-                playlistId: 'me'
-            },
-            {
-                id: 'me',
-                title: 'Study',
-                vibe: 'Chill Lofi Study Beats',
-                category: 'Category',
-                duration: 90,
-                playlistId: 'me'
-            }
-        ],
+        tasks: [],
         currentCategory: 'Home'
     })
 
     useEffect(() => {
         getTasks()
-    }, [dashboardState.currentCategory, dashboardState.tasks.length])
+    }, [dashboardState.currentCategory, dashboardState.tasks?.length])
 
     /**
      * <>@todo Implement getTasks() in ApiClient.ts
@@ -70,7 +46,7 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
     let selectedTasks =
         dashboardState.currentCategory === 'Home'
             ? dashboardState.tasks
-            : dashboardState.tasks.filter(
+            : dashboardState.tasks?.filter(
                   task => task.category === dashboardState.currentCategory
               )
 
@@ -85,7 +61,7 @@ const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
                     dashboardState={dashboardState}
                     setDashboardState={setDashboardState}
                 />
-                {selectedTasks.map((task: Task, index) => (
+                {selectedTasks?.map((task: Task, index) => (
                     <TaskCard
                         key={index}
                         task={task}

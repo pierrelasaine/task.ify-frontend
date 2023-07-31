@@ -1,8 +1,8 @@
 export default interface Task {
-    id: string
-    title: string
+    task_id: string
+    task_name: string
     category: string
     vibe: string
-    duration: number
-    playlistId: string
+    timer: number
+    playlist_id: string
 }

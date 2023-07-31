@@ -17,10 +17,10 @@ interface Config {
 
 interface TaskFormData {
     task: {
-        title: string
+        taskName: string
         category: string
         vibe: string
-        duration: number
+        timer: number
     }
     token: string
 }
@@ -40,6 +40,7 @@ class ApiClient {
         this.axiosInstance = axiosInstance
         this.axiosInstance.defaults.headers.common['Content-Type'] =
             'application/json'
+        this.axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}'`
         this.windowObject =
             windowObject || (typeof window !== 'undefined' ? window : null)
     }
@@ -118,8 +119,8 @@ class ApiClient {
     async getTasks(token: string): Promise<Response<Task[]>> {
         return this.request({
             endpoint: 'tasks',
-            method: HTTPMethods.GET,
-            data: token
+            method: HTTPMethods.POST,
+            data: { token }
         })
     }
 
@@ -139,7 +140,7 @@ class ApiClient {
      */
     async deleteTask(playlistId: string): Promise<Response> {
         return this.request({
-            endpoint: `tasks/${playlistId}`,
+            endpoint: `tasks/delete/${playlistId}`,
             method: HTTPMethods.DELETE
         })
     }
