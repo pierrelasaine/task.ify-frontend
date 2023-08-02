@@ -17,6 +17,10 @@
     "redeploy": "heroku container:push web && heroku container:release web",
     "build-amd64": "docker buildx build --platform linux/amd64 -t Task.ify/frontend-prod . --load"
   },
+  "engines": {
+    "node": "v20.3.0",
+    "npm": "9.8.0"
+  },
   "dependencies": {
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -46,7 +50,6 @@
     "@types/spotify-web-playback-sdk": "^0.1.15",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
-    "@vitejs/plugin-react": "^4.0.4",
     "eslint": "^8.44.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
