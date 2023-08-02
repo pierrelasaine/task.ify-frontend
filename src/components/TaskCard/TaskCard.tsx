@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import IDashboardState from '../../../interfaces/IDashboardState'
+import IDashboardState from '../../../interfaces/DashboardState'
 import './TaskCard.css'
 import ApiClient from '../../../services/apiClient'
 import { useEffect, useState } from 'react'

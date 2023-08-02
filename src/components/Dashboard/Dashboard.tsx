@@ -4,27 +4,27 @@ import AddTaskCard from '../AddTaskCard/AddTaskCard'
 import TaskCard from '../TaskCard/TaskCard'
 
 import ApiClient from '../../../services/apiClient'
-import IDashboardState from '../../../interfaces/IDashboardState'
+import IDashboardState from '../../../interfaces/DashboardState'
 import Task from '../../../interfaces/Task'
-import AppState from '../../../interfaces/AppState'
 import Response from '../../../interfaces/Response'
+import DashboardProps from '../../../interfaces/DashboardProps'
 import './Dashboard.css'
 
-interface IDashboardProps {
-    appState: AppState
-    setAppState: React.Dispatch<React.SetStateAction<AppState>>
-}
-
-const Dashboard: React.FC<IDashboardProps> = ({ appState, setAppState }) => {
+const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
         categories: ['Home', 'Chores', 'Work', 'School'],
         tasks: [],
-        currentCategory: 'Home'
+        currentCategory: 'Home',
+        formIsActive: false
     })
 
     useEffect(() => {
         getTasks()
-    }, [dashboardState.currentCategory, dashboardState.tasks?.length])
+    }, [
+        dashboardState.currentCategory,
+        dashboardState.tasks?.length,
+        dashboardState.formIsActive
+    ])
 
     /**
      * <>@todo Implement getTasks() in ApiClient.ts

@@ -1,5 +1,5 @@
 import React from 'react'
-import IDashboardState from '../../../interfaces/IDashboardState'
+import IDashboardState from '../../../interfaces/DashboardState'
 
 import './CategoryBar.css'
 

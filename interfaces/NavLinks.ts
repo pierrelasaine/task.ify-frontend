@@ -1,5 +1,5 @@
 import AppState from './AppState'
 
-export interface INavLinks {
+export interface NavLinks {
     appState: AppState
 }

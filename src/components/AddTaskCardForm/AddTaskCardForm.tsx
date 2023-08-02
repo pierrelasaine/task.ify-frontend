@@ -3,12 +3,11 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import './AddTaskCardForm.css'
 import { useState } from 'react'
 import ApiClient from '../../../services/apiClient'
+import AddTaskCardFormProps from '../../../interfaces/AddTaskCardFormProps'
 
-interface IAddTaskCardFormProps {
-    toggleActive: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
+const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
+    setDashboardState
+}) => {
     const [formData, setFormData] = useState({
         taskName: '',
         vibe: '',
@@ -33,7 +32,11 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
                 },
                 token: token
             })
-            if (response) toggleActive(false)
+            if (response)
+                setDashboardState(prev => ({
+                    ...prev,
+                    formIsActive: false
+                }))
         } catch (error) {
             console.error('Failed to add task:', error)
         }
@@ -41,7 +44,10 @@ const AddTaskCardForm: React.FC<IAddTaskCardFormProps> = ({ toggleActive }) => {
 
     const handleBack = () => {
         console.log('back')
-        toggleActive(false)
+        setDashboardState(prev => ({
+            ...prev,
+            formIsActive: false
+        }))
     }
     return (
         <form onSubmit={handleSubmit}>

@@ -1,27 +1,22 @@
-import { useState } from 'react'
 import AddTaskCardContents from '../AddTaskCardContents/AddTaskCardContents'
-import IDashboardState from '../../../interfaces/IDashboardState'
+import AddTaskCardProps from '../../../interfaces/AddTaskCardProps'
 import './AddTaskCard.css'
 
-export interface IAddTaskCardProps {
-    dashboardState: IDashboardState
-    setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
-}
-
-const AddTaskCard: React.FC<IAddTaskCardProps> = () => {
-    const [isActive, toggleActive] = useState(false)
+// moving isActive up to parent element in order to 
+// add a dependency on reh getTasks useEffect
+const AddTaskCard: React.FC<AddTaskCardProps> = ({ dashboardState, setDashboardState }) => {
     /**
      * <>@todo useContext to pass dashboardState and setDashboardState to AddTaskCardForm
      */
     /**
      * <>@todo animate add-task-card section to expand when form isActive
      */
-    const addTaskCardClassName = isActive ? 'add-task-card activated' : 'add-task-card'
+    const addTaskCardClassName = dashboardState.formIsActive ? 'add-task-card activated' : 'add-task-card'
     return (
         <div className={addTaskCardClassName}>
             <AddTaskCardContents
-                isActive={isActive}
-                toggleActive={toggleActive}
+                dashboardState={dashboardState}
+                setDashboardState={setDashboardState}
             />
         </div>
     )
