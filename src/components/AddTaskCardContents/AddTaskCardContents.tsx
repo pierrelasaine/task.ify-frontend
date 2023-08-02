@@ -1,22 +1,21 @@
 import AddTaskCardForm from '../AddTaskCardForm/AddTaskCardForm'
 import './AddTaskCardContents.css'
 import { Skeleton } from '@mui/material'
-
-interface AddTaskCardContentsProps {
-    isActive: boolean
-    toggleActive: React.Dispatch<React.SetStateAction<boolean>>
-}
+import AddTaskCardContentsProps from '../../../interfaces/AddTaskCardContentsProps.ts'
 
 const AddTaskCardContents: React.FC<AddTaskCardContentsProps> = ({
-    isActive,
-    toggleActive
+    dashboardState,
+    setDashboardState
 }): JSX.Element => {
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-        toggleActive(true)
+        setDashboardState(prev => ({
+            ...prev,
+            formIsActive: true
+        }))
     }
 
-    return isActive ? (
-        <AddTaskCardForm toggleActive={toggleActive}/>
+    return dashboardState.formIsActive ? (
+        <AddTaskCardForm setDashboardState={setDashboardState} />
     ) : (
         <>
             <button
