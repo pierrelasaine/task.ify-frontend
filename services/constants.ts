@@ -6,7 +6,7 @@ type NodeEnv = 'production' | 'development' | 'test' | undefined
 /**
  * `PRODUCTION_API_BASE_URL` is the base URL of the API in the production environment.
  */
-export const PRODUCTION_API_BASE_URL = 'http://localhost:3001'
+export const PRODUCTION_API_BASE_URL = 'https://taskify-backend-host-a9c6aa17afef.herokuapp.com'
 
 /**
  * `DEVELOPMENT_API_BASE_URL` is the base URL of the API in the development environment.
