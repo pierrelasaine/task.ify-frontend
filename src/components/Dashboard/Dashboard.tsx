@@ -20,11 +20,7 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
 
     useEffect(() => {
         getTasks()
-    }, [
-        dashboardState.currentCategory,
-        dashboardState.tasks?.length,
-        dashboardState.formIsActive
-    ])
+    }, [dashboardState])
 
     /**
      * <>@todo Implement getTasks() in ApiClient.ts
