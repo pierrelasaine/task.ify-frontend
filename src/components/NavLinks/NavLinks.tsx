@@ -1,14 +1,13 @@
 import { useNavigate } from 'react-router-dom'
-import { INavLinks } from '../../types'
+import { NavLinks } from '../../../interfaces/NavLinks'
 import ApiClient from '../../../services/apiClient'
 import './NavLinks.css'
 
-const NavLinks: React.FC<INavLinks> = ({ appState }) => {
+const NavLinks: React.FC<NavLinks> = ({ appState }) => {
     const navigate = useNavigate()
     const handleLogOut = async () => {
         try {
             await ApiClient.logout()
-            location.reload()
         } catch (error: any) {
             console.error('An error occurred during the log out process', error)
         }
