@@ -13,7 +13,9 @@
     "dbuild-dev": "docker build -f Dockerfile.dev -t Task.ify/frontend-dev .",
     "dbuild-prod": "docker build -f Dockerfile -t Task.ify/frontend-prod .",
     "dnew-dev": "npm run dbuild-dev && npm run ddev",
-    "dnew-prod": "npm run dbuild-prod && npm run dprod"
+    "dnew-prod": "npm run dbuild-prod && npm run dprod",
+    "redeploy": "heroku container:push web && heroku container:release web",
+    "build-amd64": "docker buildx build --platform linux/amd64 -t Task.ify/frontend-prod . --load"
   },
   "dependencies": {
     "@emotion/styled": "^11.11.0",
@@ -31,7 +33,8 @@
     "react-dom": "^18.2.0",
     "react-fontawesome": "^1.7.1",
     "react-router-dom": "^6.14.2",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "vite": "^4.4.8"
   },
   "devDependencies": {
     "@jest/globals": "^29.6.1",
@@ -47,7 +50,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
     "ts-jest": "^29.1.1",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.4"
+    "typescript": "^5.0.2"
   }
 }
