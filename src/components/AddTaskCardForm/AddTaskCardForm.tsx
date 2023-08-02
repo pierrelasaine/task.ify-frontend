@@ -23,7 +23,7 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
         e.preventDefault()
         try {
             const token = localStorage.getItem('token')!
-            const response = await ApiClient.addTask({
+            await ApiClient.addTask({
                 task: {
                     taskName: formData.taskName,
                     vibe: formData.vibe,
@@ -32,12 +32,11 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                 },
                 token: token
             })
-            if (response) {
-                setDashboardState(prev => ({
-                    ...prev,
-                    formIsActive: false
-                }))
-            }
+
+            setDashboardState(prev => ({
+                ...prev,
+                formIsActive: false
+            }))
         } catch (error) {
             console.error('Failed to add task:', error)
         }
