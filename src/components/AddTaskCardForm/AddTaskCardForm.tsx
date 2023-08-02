@@ -32,14 +32,13 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                 },
                 token: token
             })
-
-            setDashboardState(prev => ({
-                ...prev,
-                formIsActive: false
-            }))
         } catch (error) {
             console.error('Failed to add task:', error)
         }
+        setDashboardState(prev => ({
+            ...prev,
+            formIsActive: false
+        }))
     }
 
     const handleBack = () => {
