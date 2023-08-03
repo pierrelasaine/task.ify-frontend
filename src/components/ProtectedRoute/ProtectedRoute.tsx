@@ -1,4 +1,4 @@
-import { ProtectedRouteProps } from '../../types'   
+import ProtectedRouteProps from '../../../interfaces/ProtectedRouteProps'   
 import { Navigate } from 'react-router-dom'
 import Loading from '../Loading/Loading'
 

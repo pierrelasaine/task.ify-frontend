@@ -7,7 +7,7 @@ interface ITaskProp {
     isPlaying: boolean
 }
 
-const TaskBar: React.FC<ITaskProp> = ({ task, togglePlayPause, isPlaying }) => {
+const TaskBar: React.FC<ITaskProp> = ({ togglePlayPause, isPlaying }) => {
     return (
         <section className='task-bar'>
             <button
