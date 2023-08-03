@@ -93,6 +93,10 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    npm install
    ```
+3. Setup Backend Server connection in `/services/constants.ts`
+   ```sh
+   export const PRODUCTION_API_BASE_URL = 'YOUR BACKEND HOST URL'
+   ```
 
 
 <!-- USAGE EXAMPLES -->
