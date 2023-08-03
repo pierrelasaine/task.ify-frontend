@@ -16,13 +16,14 @@ import WebPlayback from '../WebPlayback/WebPlayback'
 const App: React.FC = () => {
     const [appState, setAppState] = useState<AppState>({
         isAuthenticated: false,
-        doTask: null
+        doTask: null,
+        checkSession: false
     })
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         checkAuthenticationStatus()
-    }, [])
+    }, [appState.checkSession])
 
     const checkAuthenticationStatus = async () => {
         try {
@@ -52,7 +53,7 @@ const App: React.FC = () => {
         <>
             <section className='App'>
                 <BrowserRouter>
-                    <Navbar appState={appState} />
+                    <Navbar appState={appState} setAppState={setAppState} />
                     <Routes>
                         <Route
                             path='/'

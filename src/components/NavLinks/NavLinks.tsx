@@ -3,11 +3,15 @@ import NavLinks from '../../../interfaces/NavLinks'
 import ApiClient from '../../../services/apiClient'
 import './NavLinks.css'
 
-const NavLinks: React.FC<NavLinks> = ({ appState }) => {
+const NavLinks: React.FC<NavLinks> = ({ appState, setAppState }) => {
     const navigate = useNavigate()
     const handleLogOut = async () => {
         try {
             await ApiClient.logout()
+            setAppState(prevState => ({
+                ...prevState,
+                checkSession: !prevState.checkSession
+            }))
         } catch (error: any) {
             console.error('An error occurred during the log out process', error)
         } finally {
