@@ -14,6 +14,7 @@ const NavLinks: React.FC<NavLinks> = ({ appState, setAppState }) => {
                 checkSession: prevState.checkSession,
                 isAuthenticated: false
             }))
+            localStorage.removeItem('token')
         } catch (error: any) {
             console.error('An error occurred during the log out process', error)
         } finally {
