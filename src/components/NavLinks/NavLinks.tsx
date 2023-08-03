@@ -5,12 +5,14 @@ import './NavLinks.css'
 
 const NavLinks: React.FC<NavLinks> = ({ appState, setAppState }) => {
     const navigate = useNavigate()
+
     const handleLogOut = async () => {
         try {
             await ApiClient.logout()
             setAppState(prevState => ({
                 ...prevState,
-                checkSession: !prevState.checkSession
+                checkSession: prevState.checkSession,
+                isAuthenticated: false
             }))
         } catch (error: any) {
             console.error('An error occurred during the log out process', error)
