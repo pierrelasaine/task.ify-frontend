@@ -84,7 +84,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
 
-1. Follow the instruction in the https://github.com/Takeoff-Tec/task.ify-backend](https://github.com/Takeoff-Tec/task.ify-backend) README
+1. Follow the instruction in the https://github.com/Takeoff-Tec/task.ify-backend](https://github.com/Takeoff-Tec/task.ify-backend) `README.md`
 2. 
 3. Clone the repo
    ```sh
