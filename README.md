@@ -85,29 +85,13 @@ To get a local copy up and running follow these simple example steps.
 ### Installation
 
 1. Follow the instruction in the https://github.com/Takeoff-Tec/task.ify-backend](https://github.com/Takeoff-Tec/task.ify-backend) `README.md`
-2. 
-3. Clone the repo
+2. Clone the repo
    ```sh
    git clone https://github.com/Takeoff-Tec/task.ify-frontend
    ```
-4. Install NPM packages
+3. Install NPM packages
    ```sh
    npm install
-   ```
-5. Create and Enter your Open AI API KEY and Spotify Client Secret/ID in `.env`
-   ```
-   GPT_SECRETKEY = 'ENTER YOUR API';
-   CLIENT_ID = 'ENTER YOUR API';
-   CLIENT_SECET = 'ENTER YOUR API';
-   ```
-6. Setup Database and Backend Server URL in `.env`
-   ```
-   DB_USER = 'ENTER YOUR LOCAL DB USERNAME';
-   DB_HOST = 'ENTER YOUR LOCAL DB HOST';
-   DB_NAME = 'ENTER YOUR LOCAL DB NAME';
-   DB_PASSWORD = 'ENTER YOUR LOCAL DB PASSWORD';
-   BACKEND_BASE_URL = 'ENTER YOUR LOCAL SERVER';
-   FRONTEND_ASE_URL = 'ENTER YOUR LOCAL FRONTEND HOST';
    ```
 
 
