@@ -1,5 +1,5 @@
 import AppState from './AppState'
 
-export interface NavLinks {
+export default interface NavBarProps {
     appState: AppState
 }

@@ -1,7 +1,7 @@
 import { ReactElement } from "react"
 import AppState from './AppState'
 
-export interface ProtectedRouteProps {
+export default interface ProtectedRouteProps {
     element: ReactElement
     appState: AppState
     isLoading: boolean
