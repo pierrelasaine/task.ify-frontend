@@ -42,8 +42,8 @@ const TaskCard: React.FC<ITaskCardProps> = ({
                 task.playlist_id
             )
             setPlaylistCoverUrl(playlistCover.url)
-        } catch (error) {
-            console.error('Failed to get playlist cover:', error)
+        } catch (error: any) {
+            console.error('Failed to get playlist cover:', error.message)
         }
     }
 
@@ -56,8 +56,8 @@ const TaskCard: React.FC<ITaskCardProps> = ({
                     (currentTask: Task) => currentTask.task_id !== task.task_id
                 )
             }))
-        } catch (error) {
-            console.error('Failed to delete task:', error)
+        } catch (error: any) {
+            console.error('Failed to delete task:', error.message)
         }
     }
 
