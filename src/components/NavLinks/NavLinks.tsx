@@ -11,7 +11,7 @@ const NavLinks: React.FC<NavLinks> = ({ appState, setAppState }) => {
             await ApiClient.logout()
             setAppState(prevState => ({
                 ...prevState,
-                checkSession: prevState.checkSession,
+                checkSession: !prevState.checkSession,
                 isAuthenticated: false
             }))
             localStorage.removeItem('token')
