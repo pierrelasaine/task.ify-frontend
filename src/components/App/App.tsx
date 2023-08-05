@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import ApiClient from '../../../services/apiClient'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 
 import Navbar from '../Navbar/Navbar'
 import LandingPage from '../LandingPage/LandingPage'
@@ -20,6 +20,8 @@ const App: React.FC = () => {
         checkSession: false
     })
     const [isLoading, setIsLoading] = useState(true)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         checkAuthenticationStatus()
@@ -51,6 +53,7 @@ const App: React.FC = () => {
                 ...prevState,
                 checkSession: !prevState.checkSession
             }))
+            navigate('/dashboard')
         }
     }
 
