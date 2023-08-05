@@ -46,6 +46,11 @@ const App: React.FC = () => {
             await ApiClient.spotifyOAuth()
         } catch (error: any) {
             console.error('An error occurred during the OAuth process', error)
+        } finally {
+            setAppState(prevState => ({
+                ...prevState,
+                checkSession: !prevState.checkSession
+            }))
         }
     }
 
