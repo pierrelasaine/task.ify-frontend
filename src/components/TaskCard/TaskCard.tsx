@@ -65,15 +65,12 @@ const TaskCard: React.FC<ITaskCardProps> = ({
         <div className='task-card'>
             <button
                 className='play-button'
-                onClick={()=>{
-                    startTask;
-                    }}>
+                onClick={() => {
+                    startTask
+                }}>
                 <h1>&gt;</h1>
             </button>
             <section className='task-column'>
-                {/**
-                 * <>@todo add task name and task playlist name
-                 */}
                 <section className='task-row'>
                     <h2 className='task-name'>{task.task_name}</h2>
                     <h2 className='playlist-name'>{task.vibe}</h2>
