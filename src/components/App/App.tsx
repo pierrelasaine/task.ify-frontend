@@ -21,8 +21,6 @@ const App: React.FC = () => {
     })
     const [isLoading, setIsLoading] = useState(true)
 
-    const navigate = useNavigate()
-
     useEffect(() => {
         checkAuthenticationStatus()
     }, [appState.checkSession])
@@ -53,7 +51,6 @@ const App: React.FC = () => {
                 ...prevState,
                 checkSession: !prevState.checkSession
             }))
-            navigate('/dashboard')
         }
     }
 
