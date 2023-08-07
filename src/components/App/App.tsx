@@ -22,6 +22,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         checkAuthenticationStatus()
+        console.log('App state in use effect:', appState)
     }, [appState.checkSession])
 
     const checkAuthenticationStatus = async () => {
@@ -83,7 +84,6 @@ const App: React.FC = () => {
                                         />
                                     }
                                     appState={appState}
-                                    setAppState={setAppState}
                                     isLoading={isLoading}
                                     fallback={'/'}
                                 />
@@ -95,7 +95,6 @@ const App: React.FC = () => {
                                 <ProtectedRoute
                                     element={<Do appState={appState} />}
                                     appState={appState}
-                                    setAppState={setAppState}
                                     isLoading={isLoading}
                                     fallback={'/'}
                                 />
@@ -112,7 +111,6 @@ const App: React.FC = () => {
                                         />
                                     }
                                     appState={appState}
-                                    setAppState={setAppState}
                                     isLoading={isLoading}
                                     fallback={'/'}
                                 />
