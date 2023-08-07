@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AppState from '../../../interfaces/AppState'
 import TaskBar from '../TaskBar/TaskBar'
+import WebPlayback from '../WebPlayback/WebPlayback'
 
 import './Do.css'
 
@@ -46,6 +47,10 @@ const Do: React.FC<IAppStateProp> = ({ appState }) => {
                 task={task}
                 togglePlayPause={togglePlayPause}
                 isPlaying={isPlaying}
+            />
+            <WebPlayback 
+                appState={appState} 
+                task={task} 
             />
         </section>
     )
