@@ -54,7 +54,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Task.ify is a productivity-focused music application that harnesses the power of AI. Users log in via Spotify OAuth, fill out a task form specifying the desired vibe and duration, and the app then curates a tailored playlist for that task. Once the playlist is ready, users simply click the "Start Activity" button, which streams the playlist accompanied by a timer.
+Task.ify is a productivity-focused music application that harnesses the power of AI. Users log in via Spotify OAuth, fill out a task form specifying the desired vibe and duration, and the app then curates a tailored playlist, that is also inserted into the user's spotify account, for that task. Once the playlist is ready, users simply click the "Start Activity" button, which streams the playlist accompanied by a timer. Task.ify streamlines the tedious process of making playlists for activities in user's lives by using a simple user input form to ai curate the perfect playlist for each activity!
 
 Take a Look @ Task.ify: https://taskify-frontendhost-2277661894f3.herokuapp.com/
 
