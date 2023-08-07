@@ -33,7 +33,8 @@ const App: React.FC = () => {
                 ...prevState,
                 isAuthenticated: response.data.isAuthenticated
             }))
-            localStorage.setItem('token', response.data.token)
+            if (response.data.isAuthenticated)
+                localStorage.setItem('token', response.data.token)
         } catch (error) {
             console.error('Failed to check authentication status:', error)
         } finally {
@@ -58,7 +59,10 @@ const App: React.FC = () => {
         <>
             <section className='App'>
                 <BrowserRouter>
-                    <Navbar appState={appState} setAppState={setAppState} />
+                    <Navbar
+                        appState={appState}
+                        setAppState={setAppState}
+                    />
                     <Routes>
                         <Route
                             path='/'
