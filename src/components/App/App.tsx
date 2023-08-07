@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import ApiClient from '../../../services/apiClient'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Navbar from '../Navbar/Navbar'
 import LandingPage from '../LandingPage/LandingPage'

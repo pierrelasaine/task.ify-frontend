@@ -57,7 +57,7 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                 <section className='inputs-col'>
                     <label
                         htmlFor='task-name'
-                        className='task-name'>
+                        className='task-name-form'>
                         Task Name
                     </label>
                     <input
@@ -93,8 +93,8 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                     </select>
                     <label
                         htmlFor='timer'
-                        className='timer'>
-                        timer (in minutes)
+                        className='timer-label'>
+                        Timer (in minutes)
                     </label>
                     <input
                         type='number'
