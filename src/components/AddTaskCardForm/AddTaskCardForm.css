@@ -7,31 +7,35 @@
 
 .form-row {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
 }
 
 .button-row {
     display: flex;
     justify-content: center;
+    flex-direction: row;
+    height: 20vw;
 }
 
 .form-col {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 75vw;
     align-items: center;
 }
 
 .inputs-col {
     display: flex;
     flex-direction: column;
-    margin-top: 1.5em;
-    width: 45%;
+    width: 75vw;
     align-items: left;
 }
 
 .taskifier-title {
     color: var(--secondary);
+    margin-top: 2vw;
+    margin-bottom: 0vw;
 }
 
 .generate-button {
@@ -42,9 +46,10 @@
     height: 3em;
     width: 50%;
     border-radius: 15px;
+    padding: 0px 0px;
 }
 
-.task-name {
+.task-name-form {
     color: var(--primary);
     text-align: left;
 }
@@ -63,9 +68,11 @@
     text-align: left;
 }
 
-.timer {
+.timer-label {
     color: var(--tertiary);
     text-align: left;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .category {
@@ -78,18 +85,51 @@
     color: var(--on-primary-container);
 }
 
-.generate-square {
-    background: var(--tertiary);
-    height: 11em;
-    width: 11em;
-    border-radius: 30px;
-    color: var(--on-tertiary);
-}
-
 .back {
     background: none;
     font-size: large;
     height: 2.6em;
     width: 60px;
-    margin-top: .8em;
+    margin-top: 0.8em;
+}
+
+@media screen and (min-width: 375px) {
+    .generate-button {
+        width: 50vw;
+    }
+}
+
+@media screen and (min-width: 540px) {
+    .form-row {
+        flex-direction: row;
+    }
+
+    .generate-square {
+        background: var(--tertiary);
+        height: 20vh;
+        width: 20vh;
+        border-radius: 30px;
+        color: var(--on-tertiary);
+    }
+
+    .inputs-col {
+        margin-top: 40px;
+    }
+
+    .button-row {
+        height: 55px;
+    }
+
+    .generate-button {
+        max-width: 250px;
+        margin-top: 45px;
+    }
+
+    .back {
+        margin-top: 45px;
+    }
+
+    .taskifier-title {
+        margin-top: 20px;
+    }
 }

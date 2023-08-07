@@ -8,7 +8,8 @@ const Navbar: React.FC<NavbarProps> = ({ appState, setAppState }) => {
     const location = useLocation()
     return (
         <nav className='navbar'>
-            {(location.pathname !== '/' && appState.isAuthenticated) && <Logo />}
+            {/* {(location.pathname !== '/' && appState.isAuthenticated) && <Logo />} */}
+            <Logo />
             <NavLinks
                 appState={appState}
                 setAppState={setAppState}

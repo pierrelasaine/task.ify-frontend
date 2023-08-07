@@ -1,33 +1,40 @@
 .task-card {
     display: flex;
-    height: 8em;
+    height: 24vw;
+    width: 65vw;
     justify-content: center;
     align-items: center;
     background: var(--surface-container);
-    border-radius: 30px;
-    margin-bottom: 2em;
-    padding: 0em 1em;
-    max-width: 700px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 0vw 20px;
+    max-height: 120px;
+    max-width: 600px;
 }
 
 .play-button {
     background: var(--primary);
-    height: 6em;
-    width: 6em;
-    border-radius: 20px;
-    margin-right: 1em;
+    height: 16vw;
+    width: 16vw;
+    border-radius: 15px;
     color: var(--on-primary);
+    padding: 0px 0px;
+    margin-right: 2vw;
+    max-height: 80px;
+    max-width: 80px;
 }
 
 .play-button h1 {
     margin: 0;
+    font-size: 30px;
 }
 
 .task-column {
-    height: 100px;
-    width: 80%;
+    height: 15vw;
     display: flex;
     flex-direction: column;
+    max-height: 80px;
+    max-width: 400px;
 }
 
 .task-row {
@@ -35,27 +42,37 @@
     flex-direction: row;
     justify-content: space-around;
     align-content: center;
+    height: 8vw;
+    max-height: 40px;
 }
 
 .task-name {
     color: var(--primary);
     margin: 0;
+    font-size: 15px;
+    overflow-x: scroll;
 }
 
 .playlist-name {
     color: var(--secondary);
     margin: 0;
+    font-size: 15px;
+    overflow-x: scroll;
 }
 
 .time-box {
     background-color: var(--secondary-container);
     border-radius: 30px;
-    padding: 0em 3em;
+    width: 35vw;
+    height: 8vw;
+    margin-left: 2vw;
+    max-height: 40px;
 }
 
 .time {
     color: var(--secondary);
     margin: 0;
+    font-size: 25px;
 }
 
 .task-control {
@@ -73,11 +90,14 @@
 
 .playlist-button {
     background: var(--secondary);
-    height: 6em;
-    width: 6em;
+    height: 16vw;
+    width: 16vw;
     border-radius: 20px;
     margin-left: 1em;
     color: var(--on-primary);
+    max-width: 80px;
+    max-height: 80px;
+    display: none;
 }
 
 .playlist-button h1 {
@@ -90,11 +110,64 @@
     align-items: center;
     background: var(--error);
     color: var(--on-error);
-    height: 1em;
-    width: 9%;
-    margin-top: 2em;
+    height: 3vw;
+    width: 1vw;
+    font-size: 10px;
+    margin-left: 2vw;
+    max-height: 40px;
 }
 
 .delete-spacer {
     width: 9%;
+    display: none;
+}
+
+.task-name::-webkit-scrollbar {
+    display: none;
+}
+
+.playlist-name::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (min-width: 375px) {
+    .task-name {
+        font-size: 20px;
+    }
+
+    .playlist-name {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .timer {
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 445px) {
+    .time {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 550px) {
+    .task-name {
+        font-size: 25px;
+    }
+
+    .playlist-name {
+        font-size: 25px;
+    }
+
+    .time {
+        font-size: 35px;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    .playlist-button {
+        display: block;
+    }
 }

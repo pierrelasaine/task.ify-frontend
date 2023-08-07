@@ -29,13 +29,21 @@ const NavLinks: React.FC<INavLinks> = ({ appState, setAppState }) => {
     if (location.pathname === '/do') {
         return (
             <section className='nav-links'>
-                <button className='logout-button' onClick={handleReturn}>Return to Dashboard</button>
+                <button
+                    className='logout-button'
+                    onClick={handleReturn}>
+                    Return to Dashboard
+                </button>
             </section>
         )
     } else if (appState.isAuthenticated) {
         return (
             <section className='nav-links'>
-                <button className='logout-button' onClick={handleLogOut}>Log Out</button>
+                <button
+                    className='logout-button'
+                    onClick={handleLogOut}>
+                    Log Out
+                </button>
             </section>
         )
     }

@@ -23,7 +23,7 @@ const AddTaskCardContents: React.FC<AddTaskCardContentsProps> = ({
                 onClick={handleClick}>
                 <h1>+</h1>
             </button>
-            <Skeleton
+            {/* <Skeleton
                 variant='rounded'
                 animation={false}
                 width='80%'
@@ -35,7 +35,7 @@ const AddTaskCardContents: React.FC<AddTaskCardContentsProps> = ({
                 animation={false}
                 width={100}
                 height={100}
-            />
+            /> */}
         </>
     )
 }

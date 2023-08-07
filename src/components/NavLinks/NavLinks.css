@@ -1,4 +1,10 @@
 .logout-button {
     background: var(--secondary);
-    color: var(--on-secondary)
+    color: var(--on-secondary);
+}
+
+@media screen and (min-width: 320px) {
+    .logout-button {
+        font-size: 13px;
+    }
 }
