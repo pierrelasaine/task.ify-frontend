@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import AppState from '../../../interfaces/AppState'
 import TaskBar from '../TaskBar/TaskBar'
+import WebPlayback from '../WebPlayback/WebPlayback'
 
 import './Do.css'
 
@@ -38,7 +39,7 @@ const Do: React.FC<IAppStateProp> = ({ appState }) => {
 
     return (
         <section className='do'>
-            <h2 className='do-task-name'>{task.taskName}</h2>
+            <h2 className='do-task-name'>{task.task_name}</h2>
             <section className='timer-box'>
                 <h1 className='time-value'>{formatTime(timeLeft)}</h1>
             </section>
@@ -46,6 +47,10 @@ const Do: React.FC<IAppStateProp> = ({ appState }) => {
                 task={task}
                 togglePlayPause={togglePlayPause}
                 isPlaying={isPlaying}
+            />
+            <WebPlayback 
+                appState={appState} 
+                task={task} 
             />
         </section>
     )
