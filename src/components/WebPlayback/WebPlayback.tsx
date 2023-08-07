@@ -1,5 +1,5 @@
 /// <reference types="@types/spotify-web-playback-sdk"/>
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Task from "../../../interfaces/Task"
 import AppState from "../../../interfaces/AppState"
 import axios from 'axios'

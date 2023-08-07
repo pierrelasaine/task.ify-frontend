@@ -5,15 +5,10 @@ import Loading from '../Loading/Loading'
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     element,
     appState,
-    setAppState,
     isLoading,
     fallback
 }) => {
-    setAppState(prevState => ({
-        ...prevState,
-        checkSession: !prevState.checkSession
-    }))
-
+    console.log('AppState in ProtectedRoute:', appState)
     const isAuthenticated = appState.isAuthenticated
 
     if (isLoading) return <Loading />
