@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import NavLinks from '../../../interfaces/NavLinks'
+import INavLinks from '../../../interfaces/NavLinks'
 import ApiClient from '../../../services/apiClient'
 import './NavLinks.css'
 
-const NavLinks: React.FC<NavLinks> = ({ appState, setAppState }) => {
+const NavLinks: React.FC<INavLinks> = ({ appState, setAppState }) => {
     const navigate = useNavigate()
 
     const handleLogOut = async () => {
