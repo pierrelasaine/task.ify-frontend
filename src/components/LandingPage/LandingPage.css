@@ -4,7 +4,6 @@
     padding-bottom: 8em;
 }
 
-/* 20 40 */
 .tertiary-logo-box {
     display: flex;
     align-items: center;
@@ -15,20 +14,16 @@
     border-radius: 20px;
 }
 
-/* 10vh */
 .tertiary-logo-box img {
     height: 5vh;
     object-fit: contain;
 }
 
-/* font size 100 */
 .primary-taskName {
     margin-left: 0.2em;
     color: var(--primary);
 }
 
-
-/* font size 30 remove left 5vh */
 .spotify-login {
     background: var(--primary-container);
     color: var(--on-primary-container);
@@ -37,7 +32,7 @@
     position: fixed;
     bottom: 5vh;
     right: 5vh;
-    left: 5vh
+    left: 5vh;
 }
 
 @media screen and (min-width: 768px) {
@@ -65,7 +60,7 @@
     .tertiary-logo-box {
         border-radius: 50px;
     }
-    
+
     .primary-taskName {
         font-size: 150px;
     }
@@ -75,4 +70,3 @@
         border-radius: 30px;
     }
 }
-    
