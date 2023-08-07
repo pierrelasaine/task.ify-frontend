@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import ApiClient from '../../../services/apiClient'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import "./App.css";
+import ApiClient from "../../../services/apiClient";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from '../Navbar/Navbar'
-import LandingPage from '../LandingPage/LandingPage'
-import Dashboard from '../Dashboard/Dashboard'
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-import Do from '../Do/Do'
-import AppState from '../../../interfaces/AppState'
-import SessionResponse from '../../../interfaces/SessionResponse'
-import Response from '../../../interfaces/Response'
-import WebPlayback from '../WebPlayback/WebPlayback'
+
+import Navbar from "../Navbar/Navbar";
+import LandingPage from "../LandingPage/LandingPage";
+import Dashboard from "../Dashboard/Dashboard";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Do from "../Do/Do";
+import AppState from "../../../interfaces/AppState";
+import SessionResponse from "../../../interfaces/SessionResponse";
+import Response from "../../../interfaces/Response";
+import WebPlayback from "../WebPlayback/WebPlayback";
 
 const App: React.FC = () => {
     const [appState, setAppState] = useState<AppState>({
@@ -41,7 +42,7 @@ const App: React.FC = () => {
             setIsLoading(false)
         }
     }
-
+  };
     const handleClick = async () => {
         try {
             await ApiClient.spotifyOAuth()
@@ -54,6 +55,7 @@ const App: React.FC = () => {
             }))
         }
     }
+  };
 
     return (
         <>
@@ -127,4 +129,4 @@ const App: React.FC = () => {
     )
 }
 
-export default App
+export default App;

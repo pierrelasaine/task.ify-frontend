@@ -16,7 +16,7 @@
   </a>
 
   <p align="center">
-    Task.ify your new Task manager accompanoed by an ai generated playlist based on your task's vibe
+    Task.ify: Streamlining your tasks with AI-curated playlists in a click.
     <br />
 </div>
 
@@ -54,9 +54,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-
-The backend of this project is built using Node.js and Express.js, two popular frameworks for building server-side applications in Typescript. It serves as the server-side component responsible for handling incoming requests from clients, processing data, interacting with the database, and sending back appropriate responses.
-The backend serves as the backbone of the application, allowing the frontend and other client applications to communicate with the database and external services seamlessly alongside the security provided by the Spotify OAuthentication. It plays a crucial role in providing a reliable and efficient service to users, managing data, and enabling the main features of the application to function smoothly.
+Task.ify is a productivity-focused music application that harnesses the power of AI. Users log in via Spotify OAuth, fill out a task form specifying the desired vibe and duration, and the app then curates a tailored playlist, that is also inserted into the user's spotify account, for that task. Once the playlist is ready, users simply click the "Start Activity" button, which streams the playlist accompanied by a timer. Task.ify streamlines the tedious process of making playlists for activities in user's lives by using a simple user input form to ai curate the perfect playlist for each activity!
 
 Take a Look @ Task.ify: https://taskify-frontendhost-2277661894f3.herokuapp.com/
 
@@ -169,7 +167,7 @@ Deployed Site Link: https://taskify-frontendhost-2277661894f3.herokuapp.com/
 ## Acknowledgments
 
 * [A'shuan Thomas](https://github.com/lasagnamassage)
-* [Sammy Au]()
+* [Sammy Au](https://github.com/samau3)
 * [Paige Godfrey](https://github.com/paigegodfrey)
 * Nilesh Patel (Salesforce Mentor)
 * Samuel Paramar (Salesforce Mentor)
