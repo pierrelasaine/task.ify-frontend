@@ -52,7 +52,7 @@
 
     .spotify-login {
         font-size: 30px;
-        left: none;
+        left: auto;
     }
 }
 
