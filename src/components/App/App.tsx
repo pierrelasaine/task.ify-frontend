@@ -83,6 +83,7 @@ const App: React.FC = () => {
                                         />
                                     }
                                     appState={appState}
+                                    setAppState={setAppState}
                                     isLoading={isLoading}
                                     fallback={'/'}
                                 />
@@ -94,6 +95,7 @@ const App: React.FC = () => {
                                 <ProtectedRoute
                                     element={<Do appState={appState} />}
                                     appState={appState}
+                                    setAppState={setAppState}
                                     isLoading={isLoading}
                                     fallback={'/'}
                                 />
@@ -110,6 +112,7 @@ const App: React.FC = () => {
                                         />
                                     }
                                     appState={appState}
+                                    setAppState={setAppState}
                                     isLoading={isLoading}
                                     fallback={'/'}
                                 />
