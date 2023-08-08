@@ -18,6 +18,7 @@ const WebPlayback: React.FC<WebPlaybackProps> = ({
     const playPauseButton = iframeContent.document.querySelector(
         '.play-pause-button'
     )! as HTMLButtonElement
+    playPauseButton.style.display = 'none'
 
     function playPause() {
         togglePlayPause()
