@@ -34,6 +34,7 @@ const App: React.FC = () => {
                 isAuthenticated: response.data.isAuthenticated
             }))
             if (response.data.isAuthenticated)
+                console.log("Assigning token", response.data.token)
                 localStorage.setItem('token', response.data.token)
         } catch (error) {
             console.error('Failed to check authentication status:', error)
