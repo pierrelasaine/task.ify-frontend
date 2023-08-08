@@ -65,9 +65,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({
         <div className='task-card'>
             <button
                 className='play-button'
-                onClick={() => {
-                    startTask
-                }}>
+                onClick={() => startTask()}>
                 <h1>&gt;</h1>
             </button>
             <section className='task-column'>
