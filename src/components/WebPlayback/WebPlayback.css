@@ -1,5 +1,6 @@
 .spotify-embed {
-    width: 70vw-200px;
+    min-height: 200px;
+    width: 70vw;
     height: 200px;
     position: fixed;
     right: 15vw;
