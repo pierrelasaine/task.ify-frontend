@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import AppState from '../../../interfaces/AppState'
-import TaskBar from '../TaskBar/TaskBar'
+
+import DoProps from '../../../interfaces/DoProps'
 import WebPlayback from '../WebPlayback/WebPlayback'
 
 import './Do.css'
 
-export interface IAppStateProp {
-    appState: AppState
-}
-
-const Do: React.FC<IAppStateProp> = ({ appState }) => {
+const Do: React.FC<DoProps> = ({ appState }) => {
     const task = appState.doTask!
 
     const [timeLeft, setTimeLeft] = useState<number>(task.timer * 60)
@@ -43,14 +39,10 @@ const Do: React.FC<IAppStateProp> = ({ appState }) => {
             <section className='timer-box'>
                 <h1 className='time-value'>{formatTime(timeLeft)}</h1>
             </section>
-            <TaskBar
-                task={task}
+            <WebPlayback 
+                task={task} 
                 togglePlayPause={togglePlayPause}
                 isPlaying={isPlaying}
-            />
-            <WebPlayback 
-                appState={appState} 
-                task={task} 
             />
         </section>
     )

@@ -1,3 +1,22 @@
+.spotify-embed {
+    width: 70vw-200px;
+    height: 200px;
+    position: fixed;
+    right: 15vw;
+    bottom: 50px;
+}
+
+.play-pause-button-custom {
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    background-color: var(--tertiary);
+}
+
+.play-pause-button-custom h1 {
+    margin: 0;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
