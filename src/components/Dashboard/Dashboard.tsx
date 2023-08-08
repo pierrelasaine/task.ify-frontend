@@ -20,6 +20,7 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
 
     useEffect(() => {
         getTasks()
+        getCategories()
     }, [dashboardState.formIsActive])
 
     const getTasks = async () => {
@@ -42,6 +43,16 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
                 tasks: []
             }))
         }
+    }
+
+    const getCategories = () => {
+        const categories: string[] = dashboardState.tasks?.map(
+            task => task.category
+        )
+        setDashboardState(prevState => ({
+            ...prevState,
+            categories: [...new Set(categories)]
+        }))
     }
 
     /**
