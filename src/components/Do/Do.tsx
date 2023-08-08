@@ -9,7 +9,7 @@ const Do: React.FC<DoProps> = ({ appState }) => {
     const task = appState.doTask!
 
     const [timeLeft, setTimeLeft] = useState<number>(task.timer * 60)
-    const [isPlaying, setIsPlaying] = useState(true)
+    const [isPlaying, setIsPlaying] = useState(false)
 
     useEffect(() => {
         if (!isPlaying) return
