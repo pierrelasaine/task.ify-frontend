@@ -97,7 +97,7 @@ const WebPlayback: React.FC<WebPlaybackProps> = ({ task }) => {
         );
 
         setMilisec(res.data.timestamp);
-        setTrackNumber(res.data.item.TrackObject.track_number);
+        setTrackNumber(res.data.item.track_number);
       })();
     } catch (err) {
       console.log("error messege is: ", err);
