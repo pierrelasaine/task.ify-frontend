@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import './App.css'
-import ApiClient from '../../../services/apiClient'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
+import ApiClient from '../../../services/apiClient'
 
 import Navbar from '../Navbar/Navbar'
 import LandingPage from '../LandingPage/LandingPage'
@@ -11,6 +11,8 @@ import Do from '../Do/Do'
 import AppState from '../../../interfaces/AppState'
 import SessionResponse from '../../../interfaces/SessionResponse'
 import Response from '../../../interfaces/Response'
+
+import './App.css'
 
 const App: React.FC = () => {
     const [appState, setAppState] = useState<AppState>({
@@ -34,8 +36,8 @@ const App: React.FC = () => {
                 isAuthenticated: response.data.isAuthenticated
             }))
             if (response.data.isAuthenticated)
-                console.log("Assigning token", response.data.token)
-                localStorage.setItem('token', response.data.token)
+                console.log('Assigning token', response.data.token)
+            localStorage.setItem('token', response.data.token)
         } catch (error) {
             console.error('Failed to check authentication status:', error)
         } finally {
@@ -58,68 +60,75 @@ const App: React.FC = () => {
 
     return (
         <>
-            <section className='App'>
-                <BrowserRouter>
-                    <Navbar
-                        appState={appState}
-                        setAppState={setAppState}
-                    />
-                    <Routes>
-                        <Route
-                            path='/'
-                            element={
-                                <LandingPage
-                                    appState={appState}
-                                    handleClick={handleClick}
-                                />
-                            }
+            <AnimatePresence mode='wait'>
+                <motion.section
+                    className='App'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 2 }}>
+                    <BrowserRouter>
+                        <Navbar
+                            appState={appState}
+                            setAppState={setAppState}
                         />
-                        <Route
-                            path='/dashboard'
-                            element={
-                                <ProtectedRoute
-                                    element={
-                                        <Dashboard
-                                            appState={appState}
-                                            setAppState={setAppState}
-                                        />
-                                    }
-                                    appState={appState}
-                                    isLoading={isLoading}
-                                    fallback={'/'}
-                                />
-                            }
-                        />
-                        <Route
-                            path='/do'
-                            element={
-                                <ProtectedRoute
-                                    element={<Do appState={appState} />}
-                                    appState={appState}
-                                    isLoading={isLoading}
-                                    fallback={'/'}
-                                />
-                            }
-                        />
-                        <Route
-                            path='*'
-                            element={
-                                <ProtectedRoute
-                                    element={
-                                        <Dashboard
-                                            appState={appState}
-                                            setAppState={setAppState}
-                                        />
-                                    }
-                                    appState={appState}
-                                    isLoading={isLoading}
-                                    fallback={'/'}
-                                />
-                            }
-                        />
-                    </Routes>
-                </BrowserRouter>
-            </section>
+                        <Routes>
+                            <Route
+                                path='/'
+                                element={
+                                    <LandingPage
+                                        appState={appState}
+                                        handleClick={handleClick}
+                                    />
+                                }
+                            />
+                            <Route
+                                path='/dashboard'
+                                element={
+                                    <ProtectedRoute
+                                        element={
+                                            <Dashboard
+                                                appState={appState}
+                                                setAppState={setAppState}
+                                            />
+                                        }
+                                        appState={appState}
+                                        isLoading={isLoading}
+                                        fallback={'/'}
+                                    />
+                                }
+                            />
+                            <Route
+                                path='/do'
+                                element={
+                                    <ProtectedRoute
+                                        element={<Do appState={appState} />}
+                                        appState={appState}
+                                        isLoading={isLoading}
+                                        fallback={'/'}
+                                    />
+                                }
+                            />
+                            <Route
+                                path='*'
+                                element={
+                                    <ProtectedRoute
+                                        element={
+                                            <Dashboard
+                                                appState={appState}
+                                                setAppState={setAppState}
+                                            />
+                                        }
+                                        appState={appState}
+                                        isLoading={isLoading}
+                                        fallback={'/'}
+                                    />
+                                }
+                            />
+                        </Routes>
+                    </BrowserRouter>
+                </motion.section>
+            </AnimatePresence>
         </>
     )
 }
