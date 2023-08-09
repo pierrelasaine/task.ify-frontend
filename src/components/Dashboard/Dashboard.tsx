@@ -21,8 +21,11 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
 
     useEffect(() => {
         getTasks()
-        getCategories()
     }, [dashboardState.formIsActive])
+
+    useEffect(() => {
+        getCategories()
+    })
 
     const getTasks = async () => {
         if (localStorage.getItem('token')) {
