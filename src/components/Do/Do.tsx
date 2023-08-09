@@ -41,8 +41,6 @@ const Do: React.FC<DoProps> = ({ appState }) => {
             </section>
             <WebPlayback 
                 task={task} 
-                togglePlayPause={togglePlayPause}
-                isPlaying={isPlaying}
             />
         </section>
     )
