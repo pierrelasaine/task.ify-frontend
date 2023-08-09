@@ -58,7 +58,7 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
 
         setDashboardState(prevState => ({
             ...prevState,
-            categories: ['Home', ...new Set(categories)]
+            categories: ['Home', ...uniqueCategories]
         }))
     }
 
