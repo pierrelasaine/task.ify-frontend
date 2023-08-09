@@ -13,7 +13,7 @@ import './Dashboard.css'
 
 const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
-        categories: ['Home'],
+        categories: [],
         tasks: [],
         currentCategory: 'Home',
         formIsActive: false
