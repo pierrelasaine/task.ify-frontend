@@ -1,10 +1,15 @@
 import { useNavigate } from 'react-router-dom'
-import IDashboardState from '../../../interfaces/DashboardState'
-import './TaskCard.css'
-import ApiClient from '../../../services/apiClient'
 import { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion'
+import ApiClient from '../../../services/apiClient'
+
 import Task from '../../../interfaces/Task'
 import AppState from '../../../interfaces/AppState'
+import IDashboardState from '../../../interfaces/DashboardState'
+
+import './TaskCard.css'
 
 interface ITaskCardProps {
     key: number
@@ -63,11 +68,27 @@ const TaskCard: React.FC<ITaskCardProps> = ({
 
     return (
         <div className='task-card'>
-            <button
+            <motion.button
+                whileHover={{ scale: 1.05 }}
+                transition={{
+                    type: 'tween',
+                    duration: 0.05
+                }}
                 className='play-button'
                 onClick={() => startTask()}>
-                <h1>&gt;</h1>
-            </button>
+                <motion.section
+                    whileHover={{ scale: 1.05 }}
+                    transition={{
+                        type: 'tween',
+                        duration: 0.7
+                    }}>
+                    <FontAwesomeIcon
+                        icon={faPlay}
+                        color='#ffffff'
+                        size='2xl'
+                    />
+                </motion.section>
+            </motion.button>
             <section className='task-column'>
                 <section className='task-row'>
                     <h2 className='task-name'>{task.task_name}</h2>
@@ -78,17 +99,30 @@ const TaskCard: React.FC<ITaskCardProps> = ({
                     <section className='time-box'>
                         <h1 className='time'>{task.timer}:00</h1>
                     </section>
-                    <button
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        transition={{
+                            type: 'tween',
+                            duration: 0.05
+                        }}
                         className='delete-button'
                         onClick={deleteTask}>
-                        {' '}
-                        X{' '}
-                    </button>
+                        <motion.section
+                            whileHover={{ scale: 1.05 }}
+                            transition={{
+                                type: 'tween',
+                                duration: 0.7
+                            }}>
+                            {' '}
+                            X{' '}
+                        </motion.section>
+                    </motion.button>
                 </section>
             </section>
             <img
                 className='playlist-button'
                 src={playlistCoverUrl}
+                alt='Spotify playlist cover'
             />
         </div>
     )

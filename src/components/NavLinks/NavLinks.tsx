@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
 import INavLinks from '../../../interfaces/NavLinks'
 import ApiClient from '../../../services/apiClient'
+
 import './NavLinks.css'
 
 const NavLinks: React.FC<INavLinks> = ({ appState, setAppState }) => {
@@ -29,21 +32,29 @@ const NavLinks: React.FC<INavLinks> = ({ appState, setAppState }) => {
     if (location.pathname === '/do') {
         return (
             <section className='nav-links'>
-                <button
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    transition={{
+                        type: 'tween'
+                    }}
                     className='logout-button'
                     onClick={handleReturn}>
                     Return to Dashboard
-                </button>
+                </motion.button>
             </section>
         )
     } else if (appState.isAuthenticated) {
         return (
             <section className='nav-links'>
-                <button
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    transition={{
+                        type: 'tween'
+                    }}
                     className='logout-button'
                     onClick={handleLogOut}>
                     Log Out
-                </button>
+                </motion.button>
             </section>
         )
     }

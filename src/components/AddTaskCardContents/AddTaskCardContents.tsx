@@ -1,7 +1,9 @@
 import AddTaskCardForm from '../AddTaskCardForm/AddTaskCardForm'
-import './AddTaskCardContents.css'
-import { Skeleton } from '@mui/material'
+import { motion } from 'framer-motion'
+
 import AddTaskCardContentsProps from '../../../interfaces/AddTaskCardContentsProps.ts'
+
+import './AddTaskCardContents.css'
 
 const AddTaskCardContents: React.FC<AddTaskCardContentsProps> = ({
     dashboardState,
@@ -18,24 +20,15 @@ const AddTaskCardContents: React.FC<AddTaskCardContentsProps> = ({
         <AddTaskCardForm setDashboardState={setDashboardState} />
     ) : (
         <>
-            <button
+            <motion.button
                 className='add-button'
-                onClick={handleClick}>
+                onClick={handleClick}
+                whileHover={{ scale: 1.025 }}
+                transition={{
+                    type: 'tween'
+                }}>
                 <h1>+</h1>
-            </button>
-            {/* <Skeleton
-                variant='rounded'
-                animation={false}
-                width='80%'
-                height={100}
-            />
-            <section className='spacer'></section>
-            <Skeleton
-                variant='rounded'
-                animation={false}
-                width={100}
-                height={100}
-            /> */}
+            </motion.button>
         </>
     )
 }

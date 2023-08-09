@@ -1,12 +1,9 @@
 import React from 'react'
-import IDashboardState from '../../../interfaces/DashboardState'
+import { motion } from 'framer-motion'
+
+import ICategoryBarProps from '../../../interfaces/CategoryBarProps'
 
 import './CategoryBar.css'
-
-export interface ICategoryBarProps {
-    dashboardState: IDashboardState
-    setDashboardState: React.Dispatch<React.SetStateAction<IDashboardState>>
-}
 
 const CategoryBar: React.FC<ICategoryBarProps> = ({
     dashboardState,
@@ -20,7 +17,9 @@ const CategoryBar: React.FC<ICategoryBarProps> = ({
     }
 
     const getCategoryClassName = (category: string) => {
-        return category === dashboardState.currentCategory ? 'category-button active' : 'category-button'
+        return category === dashboardState.currentCategory
+            ? 'category-button active'
+            : 'category-button'
     }
 
     return (
@@ -29,11 +28,16 @@ const CategoryBar: React.FC<ICategoryBarProps> = ({
                 <React.Fragment key={category}>
                     {' '}
                     &gt;{' '}
-                    <button
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        transition={{
+                            type: 'tween',
+                            duration: 0.1
+                        }}
                         className={getCategoryClassName(category)}
                         onClick={() => handleClick(category)}>
                         {category}
-                    </button>{' '}
+                    </motion.button>{' '}
                 </React.Fragment>
             ))}
         </div>
