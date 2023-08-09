@@ -15,7 +15,7 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
         categories: [],
         tasks: [],
-        currentCategory: 'Home',
+        currentCategory: '',
         formIsActive: false
     })
 
@@ -70,7 +70,7 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
      */
 
     let selectedTasks =
-        dashboardState.currentCategory === 'Home'
+        dashboardState.currentCategory === 'Home' || ''
             ? dashboardState.tasks
             : dashboardState.tasks?.filter(
                   task => task.category === dashboardState.currentCategory
