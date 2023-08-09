@@ -123,7 +123,7 @@ const WebPlayback: React.FC<WebPlaybackProps> = ({ task }) => {
             try {
                 ;async () => {
                     await axios.put(
-                        `https://api.spotify.com/v1/me/player/pause${deviceID}`,
+                        `https://api.spotify.com/v1/me/player/pause?device_id=${deviceID}`,
                         {
                             headers: {
                                 Authorization: `Bearer ${localStorage.getItem(

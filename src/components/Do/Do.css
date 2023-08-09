@@ -18,3 +18,11 @@
 .time-value {
     font-size: 10em;
 }
+
+.task-not-complete {
+    display: none;
+}
+
+.task-complete {
+    display: block;
+}
