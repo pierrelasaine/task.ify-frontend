@@ -1,46 +1,50 @@
 /// <reference types="@types/spotify-web-playback-sdk"/>
-import { useState, useEffect } from "react";
-import Task from "../../../interfaces/Task"
-import AppState from "../../../interfaces/AppState"
-import axios from 'axios'
+// import { useState } from 'react'
+// import Task from '../../../interfaces/Task'
+// import AppState from '../../../interfaces/AppState'
+// import axios from 'axios'
+import WebPlaybackProps from '../../../interfaces/WebPlaybackProps'
+import './WebPlayback.css'
 
-interface WebPlaybackProps {
-  appState: AppState;
-  task: Task;
+const WebPlayback: React.FC<WebPlaybackProps> = ({
+    task,
+    togglePlayPause,
+    isPlaying
+}) => {
+    const playlistID = task.playlist_id
+
+    const iframe = document.querySelector('.spotify-embed') as HTMLIFrameElement
+    const iframeContent = iframe.contentWindow!
+    const playPauseButton = iframeContent.document.querySelector(
+        '.play-pause-button'
+    )! as HTMLButtonElement
+    playPauseButton.style.display = 'none'
+
+    function playPause() {
+        togglePlayPause()
+        playPauseButton.click()
+    }
+
+    return (
+        <section className='player'>
+            <button
+                className='play-pause-button-custom'
+                onClick={() => playPause()}>
+                <h1>{isPlaying ? '||' : '>'}</h1>
+            </button>
+            <iframe
+                title='Spotify Embed: Recommendation Playlist '
+                src={`https://open.spotify.com/embed/playlist/${playlistID}?utm_source=generator&theme=0`}
+                className='spotify-embed'
+                width='100%'
+                height='100%'
+                style={{ minHeight: '360px' }}
+                frameBorder='0'
+                allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+                loading='lazy'
+            />
+        </section>
+    )
 }
 
-const WebPlayback: React.FC<WebPlaybackProps> = ({ appState, task }) => {
-    const [URI, setURI] = useState(null);
-    const playlistID = task.playlist_id;
-
-    (async () => {
-        const res = await axios.get(
-            `https://api.spotify.com/v1/playlists/${playlistID}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            }
-        )
-
-        setURI(res.data.uri);
-    })()
-
-
-  return (
-    <>
-      <iframe
-        title="Spotify Embed: Recommendation Playlist "
-        src={`https://open.spotify.com/embed/playlist/${URI}?utm_source=generator&theme=0`}
-        width="100%"
-        height="100%"
-        style={{ minHeight: "360px" }}
-        frameBorder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      />
-    </>
-  );
-};
-
-export default WebPlayback;
+export default WebPlayback

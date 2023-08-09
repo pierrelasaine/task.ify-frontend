@@ -12,7 +12,7 @@ import './Dashboard.css'
 
 const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
     const [dashboardState, setDashboardState] = useState<IDashboardState>({
-        categories: ['Home', 'Chores', 'Work', 'School'],
+        categories: ['Home'],
         tasks: [],
         currentCategory: 'Home',
         formIsActive: false
@@ -20,20 +20,44 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
 
     useEffect(() => {
         getTasks()
+        getCategories()
     }, [dashboardState.formIsActive])
 
     const getTasks = async () => {
-        try {
-            const token = localStorage.getItem('token')!
-            const response: Response<Task[]> = await ApiClient.getTasks(token)
+        if (localStorage.getItem('token')) {
+            try {
+                const token = localStorage.getItem('token')!
+                const response: Response<Task[]> = await ApiClient.getTasks(
+                    token
+                )
+                setDashboardState(prevState => ({
+                    ...prevState,
+                    tasks: response.data
+                }))
+            } catch (error) {
+                console.error('Failed to get tasks:', error)
+            }
+        } else {
             setDashboardState(prevState => ({
                 ...prevState,
-                tasks: response.data
+                tasks: []
             }))
-        } catch (error) {
-            console.error('Failed to get tasks:', error)
         }
     }
+
+    const getCategories = () => {
+        const categories: string[] = dashboardState.tasks?.map(
+            task => task.category
+        )
+        setDashboardState(prevState => ({
+            ...prevState,
+            categories: ['Home', ...new Set(categories)]
+        }))
+    }
+
+    /**
+     * @todo placeholder for if task list is empty
+     */
 
     let selectedTasks =
         dashboardState.currentCategory === 'Home'

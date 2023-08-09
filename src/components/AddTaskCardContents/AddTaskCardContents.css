@@ -1,16 +1,15 @@
 .add-button {
     background: var(--tertiary);
-    height: 6em;
-    width: 6em;
-    border-radius: 20px;
-    margin-right: 1em;
+    height: 16vw;
+    width: 65vw;
+    border-radius: 15px;
     color: var(--on-tertiary);
+    margin: 2.5vw 0px;
+    padding: 0px 0px;
+    max-height: 80px;
 }
 
 .add-button h1 {
+    font-size: 30px;
     margin: 0;
-}
-
-.spacer {
-    width: 1em;
 }

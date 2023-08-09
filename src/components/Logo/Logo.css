@@ -5,13 +5,16 @@
     background: var(--secondary-container);
     color: var(--primary);
     border-radius: 15px;
-    font-size: 30px;
+    font-size: 25px;
     height: 1em;
     padding: 0.5em 0.5em;
     font-weight: 500;
-
+    width: 40vw;
+    max-width: 160px;
 }
 
 .dashboard-triangle {
-    height: 1.5em;
+    height: 8vw;
+    max-height: 40px;
+    max-width: 40px;
 }

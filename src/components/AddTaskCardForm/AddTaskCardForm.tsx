@@ -57,7 +57,7 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                 <section className='inputs-col'>
                     <label
                         htmlFor='task-name'
-                        className='task-name'>
+                        className='task-name-form'>
                         Task Name
                     </label>
                     <input
@@ -76,7 +76,7 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                     <label
                         htmlFor='vibe'
                         className='vibe'>
-                        Vibe
+                        Playlist Vibe
                     </label>
                     <select
                         className='input-field'
@@ -93,8 +93,8 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                     </select>
                     <label
                         htmlFor='timer'
-                        className='timer'>
-                        timer (in minutes)
+                        className='timer-label'>
+                        Timer Duration (in minutes)
                     </label>
                     <input
                         type='number'
@@ -112,7 +112,7 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                     <label
                         htmlFor='category'
                         className='category'>
-                        Category
+                        Task Category (School, Work, etc.)
                     </label>
                     <input
                         type='text'
