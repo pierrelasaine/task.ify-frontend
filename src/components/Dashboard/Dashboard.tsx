@@ -50,6 +50,12 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
         const categories: string[] = dashboardState.tasks?.map(
             task => task.category
         )
+        let uniqueCategories = [...new Set(categories)]
+        if ('Home' in uniqueCategories) {
+            const homeIndex = uniqueCategories.indexOf('Home')
+            uniqueCategories.splice(homeIndex, 1)
+        }
+
         setDashboardState(prevState => ({
             ...prevState,
             categories: ['Home', ...new Set(categories)]
