@@ -8,29 +8,65 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 15em;
-    width: 15em;
+    height: 10vh;
+    width: 10vh;
     background: var(--tertiary-container);
-    border-radius: 60px;
+    border-radius: 20px;
 }
 
 .tertiary-logo-box img {
-    height: 7em;
+    height: 5vh;
     object-fit: contain;
 }
 
 .primary-taskName {
     margin-left: 0.2em;
-    font-size: 150px;
     color: var(--primary);
 }
 
 .spotify-login {
     background: var(--primary-container);
     color: var(--on-primary-container);
-    font-size: 30px;
-    border-radius: 30px;
+    font-size: 25px;
+    border-radius: 20px;
     position: fixed;
-    bottom: 50px;
-    right: 50px;
+    bottom: 5vh;
+    right: 5vh;
+    left: 5vh;
+}
+
+@media screen and (min-width: 768px) {
+    .tertiary-logo-box {
+        height: 20vh;
+        width: 20vh;
+        border-radius: 40px;
+    }
+
+    .tertiary-logo-box img {
+        height: 10vh;
+    }
+
+    .primary-taskName {
+        font-size: 100px;
+    }
+
+    .spotify-login {
+        font-size: 30px;
+        left: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .tertiary-logo-box {
+        border-radius: 50px;
+    }
+
+    .primary-taskName {
+        font-size: 150px;
+    }
+
+    .spotify-login {
+        font-size: 50px;
+        border-radius: 30px;
+    }
 }

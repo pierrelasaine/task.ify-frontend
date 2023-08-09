@@ -1,30 +1,31 @@
 import { useNavigate } from 'react-router-dom'
-import { INavLinks } from '../../types'
+import INavLinks from '../../../interfaces/NavLinks'
 import ApiClient from '../../../services/apiClient'
 import './NavLinks.css'
 
-const NavLinks: React.FC<INavLinks> = ({ appState }) => {
+const NavLinks: React.FC<INavLinks> = ({ appState, setAppState }) => {
     const navigate = useNavigate()
+
     const handleLogOut = async () => {
         try {
             await ApiClient.logout()
-            location.reload()
+            setAppState(prevState => ({
+                ...prevState,
+                checkSession: !prevState.checkSession,
+                isAuthenticated: false
+            }))
+            localStorage.removeItem('token')
         } catch (error: any) {
             console.error('An error occurred during the log out process', error)
+        } finally {
+            navigate('/')
         }
-        navigate('/')
     }
 
     const handleReturn = () => {
-        /**
-         * @todo handle return logic
-         */
         navigate('/dashboard')
     }
 
-    /**
-     * @todo add link to dashboard
-     */
     if (location.pathname === '/do') {
         return (
             <section className='nav-links'>

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import IDashboardState from '../../../interfaces/IDashboardState'
+import IDashboardState from '../../../interfaces/DashboardState'
 import './TaskCard.css'
 import ApiClient from '../../../services/apiClient'
 import { useEffect, useState } from 'react'
@@ -42,8 +42,8 @@ const TaskCard: React.FC<ITaskCardProps> = ({
                 task.playlist_id
             )
             setPlaylistCoverUrl(playlistCover.url)
-        } catch (error) {
-            console.error('Failed to get playlist cover:', error)
+        } catch (error: any) {
+            console.error('Failed to get playlist cover:', error.message)
         }
     }
 
@@ -56,8 +56,8 @@ const TaskCard: React.FC<ITaskCardProps> = ({
                     (currentTask: Task) => currentTask.task_id !== task.task_id
                 )
             }))
-        } catch (error) {
-            console.error('Failed to delete task:', error)
+        } catch (error: any) {
+            console.error('Failed to delete task:', error.message)
         }
     }
 
@@ -65,15 +65,12 @@ const TaskCard: React.FC<ITaskCardProps> = ({
         <div className='task-card'>
             <button
                 className='play-button'
-                onClick={()=>{
-                    startTask;
-                    }}>
+                onClick={() => {
+                    startTask
+                }}>
                 <h1>&gt;</h1>
             </button>
             <section className='task-column'>
-                {/**
-                 * <>@todo add task name and task playlist name
-                 */}
                 <section className='task-row'>
                     <h2 className='task-name'>{task.task_name}</h2>
                     <h2 className='playlist-name'>{task.vibe}</h2>

@@ -1,5 +1,5 @@
 // External libraries
-import axios, { AxiosResponse, Method } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 // Internal modules
 import { API_BASE_URL } from './constants'
@@ -8,22 +8,8 @@ import Task from '../interfaces/Task'
 import Response from '../interfaces/Response'
 import SessionResponse from '../interfaces/SessionResponse'
 import PlaylistCover from '../interfaces/PlaylistCover'
-
-interface Config {
-    endpoint: string
-    method: Method
-    data?: unknown
-}
-
-interface TaskFormData {
-    task: {
-        taskName: string
-        category: string
-        vibe: string
-        timer: number
-    }
-    token: string
-}
+import Config from '../interfaces/Config'
+import TaskFormData from '../interfaces/TaskFormData'
 
 enum HTTPMethods {
     GET = 'GET',
