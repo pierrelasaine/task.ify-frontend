@@ -49,7 +49,6 @@ const Do: React.FC<IAppStateProp> = ({ appState }) => {
                 isPlaying={isPlaying}
             />
             <WebPlayback 
-                appState={appState} 
                 task={task} 
             />
         </section>
