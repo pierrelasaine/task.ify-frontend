@@ -23,6 +23,7 @@
     flex-direction: column;
     width: 75vw;
     align-items: center;
+    max-width: 50%;
 }
 
 .inputs-col {
@@ -77,6 +78,8 @@
 
 .category {
     color: var(--on-secondary-container);
+    white-space: nowrap;
+    overflow-x: scroll;
     text-align: left;
 }
 
@@ -93,6 +96,14 @@
     margin-top: 0.8em;
 }
 
+.loading {
+    display: block;
+}
+
+.not-loading {
+    display: none;
+}
+
 @media screen and (min-width: 375px) {
     .generate-button {
         width: 50vw;
@@ -105,6 +116,9 @@
     }
 
     .generate-square {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background: var(--tertiary);
         height: 20vh;
         width: 20vh;
@@ -114,6 +128,7 @@
 
     .inputs-col {
         margin-top: 40px;
+        width: 23vh;
     }
 
     .button-row {

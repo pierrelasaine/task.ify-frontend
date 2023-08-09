@@ -1,13 +1,17 @@
-import Skeleton from '@mui/material/Skeleton'
+import { Waveform } from '@uiball/loaders'
+import { motion } from 'framer-motion'
 
 const Loading: React.FC = () => {
     return (
-        <Skeleton
-            variant='rounded'
-            animation='wave'
-            width={100}
-            height={100}
-        />
+        <motion.section
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.5,
+                ease: [0, 0.71, 0.2, 1.01]
+            }}>
+            <Waveform color='#ffffff' />
+        </motion.section>
     )
 }
 

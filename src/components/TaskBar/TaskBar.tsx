@@ -1,4 +1,5 @@
 import Task from '../../../interfaces/Task'
+
 import './TaskBar.css'
 
 interface ITaskProp {

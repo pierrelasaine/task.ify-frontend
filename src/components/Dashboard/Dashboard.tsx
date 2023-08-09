@@ -8,6 +8,7 @@ import IDashboardState from '../../../interfaces/DashboardState'
 import Task from '../../../interfaces/Task'
 import Response from '../../../interfaces/Response'
 import DashboardProps from '../../../interfaces/DashboardProps'
+
 import './Dashboard.css'
 
 const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
@@ -56,7 +57,7 @@ const Dashboard: React.FC<DashboardProps> = ({ appState, setAppState }) => {
     }
 
     /**
-     * @todo placeholder for if task list is empty
+     * @todo add placeholder for if task list is empty
      */
 
     let selectedTasks =

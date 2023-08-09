@@ -1,19 +1,25 @@
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import './AddTaskCardForm.css'
-import { useState } from 'react'
+import { motion } from 'framer-motion'
+
 import ApiClient from '../../../services/apiClient'
 import AddTaskCardFormProps from '../../../interfaces/AddTaskCardFormProps'
+
+import './AddTaskCardForm.css'
+import Loading from '../Loading/Loading'
 
 const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
     setDashboardState
 }) => {
+    const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState({
         taskName: '',
         vibe: '',
         timer: '',
         category: ''
     })
+
     /**
      * @todo add default field for vibe
      * @todo error handling for form
@@ -21,6 +27,7 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setIsLoading(true)
         try {
             const token = localStorage.getItem('token')!
             await ApiClient.addTask({
@@ -34,6 +41,8 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
             })
         } catch (error) {
             console.error('Failed to add task:', error)
+        } finally {
+            setIsLoading(false)
         }
         setDashboardState(prev => ({
             ...prev,
@@ -47,12 +56,35 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
             formIsActive: false
         }))
     }
+
+    const loading = isLoading ? 'loading' : 'not-loading'
+
     return (
-        <form onSubmit={handleSubmit}>
+        <motion.form
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.8,
+                delay: 0.5,
+                ease: [0, 0.71, 0.2, 1.01]
+            }}
+            onSubmit={handleSubmit}>
             <section className='form-row'>
                 <section className='form-col'>
                     <h2 className='taskifier-title'>Task.ifier</h2>
-                    <section className='generate-square'></section>
+                    <section className='generate-square'>
+                        <motion.section
+                            initial={{ opacity: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.8,
+                                delay: 0.5,
+                                ease: [0, 0.71, 0.2, 1.01]
+                            }}
+                            className={loading}>
+                            <Loading />
+                        </motion.section>
+                    </section>
                 </section>
                 <section className='inputs-col'>
                     <label
@@ -112,7 +144,7 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                     <label
                         htmlFor='category'
                         className='category'>
-                        Task Category (School, Work, etc.)
+                        Task Category
                     </label>
                     <input
                         type='text'
@@ -130,7 +162,11 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                 </section>
             </section>
             <section className='form-row button-row'>
-                <button
+                <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    transition={{
+                        type: 'tween'
+                    }}
                     className='back'
                     onClick={handleBack}
                     type='button'>
@@ -139,14 +175,18 @@ const AddTaskCardForm: React.FC<AddTaskCardFormProps> = ({
                         size='xl'
                         style={{ color: '#58624e' }}
                     />
-                </button>
-                <button
+                </motion.button>
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    transition={{
+                        type: 'tween'
+                    }}
                     className='generate-button'
                     type='submit'>
                     Generate Playlist
-                </button>
+                </motion.button>
             </section>
-        </form>
+        </motion.form>
     )
 }
 

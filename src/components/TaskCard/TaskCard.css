@@ -10,6 +10,7 @@
     padding: 0vw 20px;
     max-height: 120px;
     max-width: 600px;
+    box-shadow: 0px 1px 20px -15px rgba(0, 0, 0, 1);
 }
 
 .play-button {
@@ -22,6 +23,12 @@
     margin-right: 2vw;
     max-height: 80px;
     max-width: 80px;
+    transition: 0.5s;
+}
+
+.play-button:hover {
+    transition: 0.5s;
+    box-shadow: 0px 1px 20px -10px rgba(0, 0, 0, 1);
 }
 
 .play-button h1 {
