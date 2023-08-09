@@ -143,7 +143,7 @@ const WebPlayback: React.FC<WebPlaybackProps> = ({ task }) => {
         try {
             ;async () => {
                 await axios.put(
-                    `https://api.spotify.com/v1/me/player/play${deviceID}`,
+                    `https://api.spotify.com/v1/me/player/play?device_id=${deviceID}`,
                     {
                         context_uri: 'spotify:album:' + URI,
                         offset: {
